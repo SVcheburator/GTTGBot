@@ -23,19 +23,22 @@ class ExerciseSerializer(serializers.ModelSerializer):
 
 
 class CycleDaySerializer(serializers.ModelSerializer):
-    muscle_groups = MuscleGroupSerializer(many=True, read_only=True)
-
     class Meta:
         model = CycleDay
-        fields = ['id', 'day_number', 'is_training_day', 'muscle_groups']
+        fields = ['id', 'cycle', 'day_number', 'is_training_day', 'muscle_groups']
 
 
 class TrainingCycleSerializer(serializers.ModelSerializer):
-    days = CycleDaySerializer(many=True, read_only=True)
+    telegram_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = TrainingCycle
-        fields = ['id', 'name', 'length', 'days']
+        fields = ['id', 'name', 'length', 'telegram_id']
+
+    def create(self, validated_data):
+        telegram_id = validated_data.pop('telegram_id')
+        user, _ = User.objects.get_or_create(telegram_id=telegram_id)
+        return TrainingCycle.objects.create(user=user, **validated_data)
 
 
 class WorkoutExerciseSerializer(serializers.ModelSerializer):
