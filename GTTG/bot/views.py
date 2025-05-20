@@ -30,10 +30,32 @@ class TrainingCycleViewSet(viewsets.ModelViewSet):
     queryset = TrainingCycle.objects.all()
     serializer_class = TrainingCycleSerializer
 
+    def get_queryset(self):
+        queryset = TrainingCycle.objects.all()
+
+        telegram_id = self.request.query_params.get("telegram_id")
+        if telegram_id:
+            queryset = queryset.filter(user__telegram_id=telegram_id)
+
+        return queryset
+
 
 class CycleDayViewSet(viewsets.ModelViewSet):
     queryset = CycleDay.objects.all()
     serializer_class = CycleDaySerializer
+
+    def get_queryset(self):
+        queryset = CycleDay.objects.all()
+
+        cycle_id = self.request.query_params.get("cycle_id")
+        if cycle_id:
+            queryset = queryset.filter(cycle__id=cycle_id)
+
+        telegram_id = self.request.query_params.get("telegram_id")
+        if telegram_id:
+            queryset = queryset.filter(cycle__user__telegram_id=telegram_id)
+
+        return queryset
 
 
 class WorkoutViewSet(viewsets.ModelViewSet):
