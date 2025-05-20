@@ -166,6 +166,7 @@ def finalize_plan(message):
         return
 
     cycle_id = response.json()['id']
+    data['id'] = cycle_id
 
     for day in data['days']:
         day_payload = {
@@ -176,8 +177,99 @@ def finalize_plan(message):
         }
         requests.post(f"{API_URL}cycle-days/", json=day_payload)
 
-    bot.send_message(message.chat.id, f"Plan \"{data['name']}\" created ✅", reply_markup=types.ReplyKeyboardRemove())
+    bot.send_message(message.chat.id, f"Plan created ✅", reply_markup=types.ReplyKeyboardRemove())
+    
+    summary_text = generate_plan_summary(data)
+    bot.send_message(message.chat.id, summary_text, parse_mode="Markdown")
+
     user_plan_data.pop(user_id, None)
+
+
+def generate_plan_summary(plan_data, days_data=None):
+    try:
+        group_resp = requests.get(f"{API_URL}muscle-groups/")
+        if group_resp.status_code != 200:
+            return "Error while getting muscle groups."
+
+        group_map = {g['id']: g['name'] for g in group_resp.json()}
+        summary = f"📝 *Here is your plan \"{plan_data['name']}\":*\n\n"
+
+        if days_data is None:
+            days_resp = requests.get(f"{API_URL}cycle-days/?cycle_id={plan_data['id']}")
+            if days_resp.status_code != 200:
+                return "Error while getting cycle days."
+            days_data = days_resp.json()
+
+        seen = set()
+        unique_days = []
+        for day in days_data:
+            key = (day['day_number'], day['is_training_day'], tuple(day['muscle_groups']))
+            if key not in seen:
+                seen.add(key)
+                unique_days.append(day)
+
+        unique_days.sort(key=lambda x: x['day_number'])
+
+        for day in unique_days:
+            summary += f"*Day {day['day_number']}:* "
+            if day['is_training_day']:
+                group_names = [group_map.get(gid, f"ID:{gid}") for gid in day['muscle_groups']]
+                summary += f"Training day 💪\nMuscle groups: *{', '.join(group_names)}*\n"
+            else:
+                summary += "Rest day 😴\n"
+            summary += "\n"
+
+        return summary.strip()
+    except Exception as e:
+        return f"Error generating plan summary: {str(e)}"
+
+
+
+@bot.message_handler(commands=['myplans'])
+def list_user_plans(message):
+    user_id = message.from_user.id
+    response = requests.get(f"{API_URL}training-cycles/?telegram_id={user_id}")
+    
+    if response.status_code != 200 or not response.json():
+        bot.send_message(message.chat.id, "You have no saved plans.")
+        return
+
+    plans = response.json()
+
+    markup = types.InlineKeyboardMarkup()
+    for plan in plans:
+        btn = types.InlineKeyboardButton(
+            text=plan['name'],
+            callback_data=f"view_plan_{plan['id']}"
+        )
+        markup.add(btn)
+    
+    bot.send_message(message.chat.id, "📋 Your training plans:", reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("view_plan_"))
+def handle_view_plan(call):
+    plan_id = call.data.split("view_plan_")[1]
+
+    plan_resp = requests.get(f"{API_URL}training-cycles/{plan_id}/")
+    if plan_resp.status_code != 200:
+        bot.answer_callback_query(call.id, "Plan not found.")
+        return
+
+    plan = plan_resp.json()
+
+    days_resp = requests.get(f"{API_URL}cycle-days/?cycle_id={plan_id}")
+    if days_resp.status_code != 200:
+        bot.answer_callback_query(call.id, "Failed to get days.")
+        return
+
+    days = days_resp.json()
+
+    summary = generate_plan_summary(plan, days)
+    bot.send_message(call.message.chat.id, summary, parse_mode="Markdown")
+    bot.answer_callback_query(call.id)
+
+
 
 
 if __name__ == '__main__':
