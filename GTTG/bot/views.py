@@ -14,6 +14,7 @@ from .serializers import (
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    lookup_field = "telegram_id"
 
 
 class MuscleGroupViewSet(viewsets.ModelViewSet):

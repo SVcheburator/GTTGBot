@@ -225,7 +225,6 @@ def generate_plan_summary(plan_data, days_data=None):
         return f"Error generating plan summary: {str(e)}"
 
 
-
 @bot.message_handler(commands=['myplans'])
 def list_user_plans(message):
     user_id = message.from_user.id
@@ -245,7 +244,7 @@ def list_user_plans(message):
         )
         markup.add(btn)
     
-    bot.send_message(message.chat.id, "📋 Your training plans:", reply_markup=markup)
+    bot.send_message(message.chat.id, "⭐ Your current plan: /currentplan\n📋 All Your training plans:", reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("view_plan_"))
@@ -270,8 +269,57 @@ def handle_view_plan(call):
     markup = types.InlineKeyboardMarkup()
     markup.add(
         types.InlineKeyboardButton("🗑️ Delete", callback_data=f"delete_plan_confirm_{plan_id}"),
+        types.InlineKeyboardButton("⭐ Set as current", callback_data=f"set_current_plan_{plan_id}")
     )
     bot.send_message(call.message.chat.id, summary, parse_mode="Markdown", reply_markup=markup)
+    bot.answer_callback_query(call.id)
+
+
+@bot.message_handler(commands=['currentplan'])
+def handle_current_plan(message):
+    user_id = message.from_user.id
+
+    user_resp = requests.get(f"{API_URL}users/{user_id}/")
+    if user_resp.status_code != 200:
+        bot.send_message(message.chat.id, "❌ Failed to fetch user info.")
+        return
+
+    user_data = user_resp.json()
+    current_cycle = user_data.get("current_cycle")
+
+    if not current_cycle:
+        bot.send_message(message.chat.id, "⚠️ You don't have a current plan set.")
+        return
+
+    plan_resp = requests.get(f"{API_URL}training-cycles/{current_cycle}/")
+    if plan_resp.status_code != 200:
+        bot.send_message(message.chat.id, "❌ Failed to fetch your current plan.")
+        return
+
+    plan_data = plan_resp.json()
+
+    days_resp = requests.get(f"{API_URL}cycle-days/?cycle_id={current_cycle}")
+    if days_resp.status_code != 200:
+        bot.send_message(message.chat.id, "❌ Failed to fetch plan days.")
+        return
+
+    days = days_resp.json()
+
+    summary = generate_plan_summary(plan_data, days)
+    bot.send_message(message.chat.id, f"⭐ *Your current plan:*\n\n{summary}", parse_mode="Markdown")
+
+
+# Setting training plan as current
+@bot.callback_query_handler(func=lambda call: call.data.startswith("set_current_plan_"))
+def handle_set_current_plan(call):
+    plan_id = call.data.split("set_current_plan_")[1]
+    user_id = call.from_user.id
+
+    response = requests.patch(f"{API_URL}users/{user_id}/", json={"current_cycle": plan_id})
+    if response.status_code == 200:
+        bot.send_message(call.message.chat.id, "⭐ This plan was set as current!")
+    else:
+        bot.send_message(call.message.chat.id, "❌ Error while setting as current.")
     bot.answer_callback_query(call.id)
 
 
