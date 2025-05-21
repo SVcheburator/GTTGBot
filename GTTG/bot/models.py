@@ -6,6 +6,7 @@ class User(models.Model):
     telegram_id = models.BigIntegerField(unique=True)
     username = models.CharField(max_length=150, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    current_cycle = models.ForeignKey('TrainingCycle', null=True, blank=True, on_delete=models.SET_NULL, related_name='current_users')
 
     def __str__(self):
         return f"{self.username or self.telegram_id}"
