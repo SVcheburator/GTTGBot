@@ -185,6 +185,7 @@ def finalize_plan(message):
     user_plan_data.pop(user_id, None)
 
 
+# Listing plan summary
 def generate_plan_summary(plan_data, days_data=None):
     try:
         group_resp = requests.get(f"{API_URL}muscle-groups/")
@@ -266,9 +267,44 @@ def handle_view_plan(call):
     days = days_resp.json()
 
     summary = generate_plan_summary(plan, days)
-    bot.send_message(call.message.chat.id, summary, parse_mode="Markdown")
+    markup = types.InlineKeyboardMarkup()
+    markup.add(
+        types.InlineKeyboardButton("🗑️ Delete", callback_data=f"delete_plan_confirm_{plan_id}"),
+    )
+    bot.send_message(call.message.chat.id, summary, parse_mode="Markdown", reply_markup=markup)
     bot.answer_callback_query(call.id)
 
+
+# Deleting training plan
+@bot.callback_query_handler(func=lambda call: call.data.startswith("delete_plan_confirm_"))
+def confirm_delete_plan(call):
+    plan_id = call.data.split("delete_plan_confirm_")[1]
+
+    markup = types.InlineKeyboardMarkup()
+    markup.add(
+        types.InlineKeyboardButton("🗑️ Yes, delete", callback_data=f"delete_plan_{plan_id}"),
+        types.InlineKeyboardButton("❌ No, cancel", callback_data="cancel_delete")
+    )
+    bot.send_message(call.message.chat.id, "Are You sure You want to delete this training plan?", reply_markup=markup)
+    bot.answer_callback_query(call.id)
+
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("delete_plan_"))
+def handle_delete_plan(call):
+    plan_id = call.data.split("delete_plan_")[1]
+    response = requests.delete(f"{API_URL}training-cycles/{plan_id}/")
+
+    if response.status_code == 204:
+        bot.send_message(call.message.chat.id, "✅ Training plan was deleted.")
+    else:
+        bot.send_message(call.message.chat.id, "❌ Error while deleting plan.")
+    bot.answer_callback_query(call.id)
+
+
+@bot.callback_query_handler(func=lambda call: call.data == "cancel_delete")
+def cancel_delete(call):
+    bot.send_message(call.message.chat.id, "❎ Deleting canceled.")
+    bot.answer_callback_query(call.id)
 
 
 
