@@ -1,6 +1,8 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.exceptions import ValidationError
+from datetime import date
 from .models import (
     User, MuscleGroup, Exercise, TrainingCycle, CycleDay, Workout, WorkoutExercise
 )
@@ -62,6 +64,27 @@ class CycleDayViewSet(viewsets.ModelViewSet):
 class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
+
+    def create(self, request, *args, **kwargs):
+        telegram_id = request.data.get('telegram_id')
+        if not telegram_id:
+            raise ValidationError({'telegram_id': 'This field is required.'})
+        
+        try:
+            user = User.objects.get(telegram_id=telegram_id)
+        except User.DoesNotExist:
+            raise ValidationError({'telegram_id': 'User not found.'})
+
+        workout_data = request.data.copy()
+        workout_data['user'] = user.id
+        workout_data['date'] = date.today().isoformat()
+        workout_data.pop('telegram_id', None)
+
+        serializer = self.get_serializer(data=workout_data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class WorkoutExerciseViewSet(viewsets.ModelViewSet):

@@ -11,7 +11,6 @@ API_URL = os.getenv("API_URL")
 
 bot = telebot.TeleBot(TOKEN)
 
-user_plan_data = {}
 
 def get_or_create_user(telegram_id, username):
     url = f"{API_URL}auth-user/"
@@ -32,10 +31,18 @@ def handle_start(message):
 
 @bot.message_handler(commands=['help'])
 def handle_help(message):
-    bot.send_message(message.chat.id, "/start - start GTTG bot\n/help - help with bot's commands\n/createplan - create a new training plan")
+    help_text = "/start - start GTTG" \
+    "\n/help - show this" \
+    "\n/createplan - create a new training plan" \
+    "\n/myplans - show all training plans" \
+    "\n/currentplan - show plan that was set as current" \
+    "\n/startworkout - start a new workout from plan or not"
+    bot.send_message(message.chat.id, help_text)
 
 
 # Creating a training plan
+user_plan_data = {}
+
 @bot.message_handler(commands=['createplan'])
 def start_create_plan(message):
     user_id = message.from_user.id
@@ -354,6 +361,146 @@ def cancel_delete(call):
     bot.send_message(call.message.chat.id, "❎ Deleting canceled.")
     bot.answer_callback_query(call.id)
 
+
+# Starting workout
+@bot.message_handler(commands=['startworkout'])
+def start_workout(message):
+    user_id = message.from_user.id
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+    markup.add("From my plan", "Custom workout")
+    msg = bot.send_message(message.chat.id, "Do you want to start workout from your current plan or create a custom one?", reply_markup=markup)
+    bot.register_next_step_handler(msg, process_workout_type)
+
+
+def process_workout_type(message):
+    user_id = message.from_user.id
+    text = message.text.strip().lower()
+
+    if text == "from my plan":
+        user_resp = requests.get(f"{API_URL}users/{user_id}/")
+        if user_resp.status_code != 200:
+            bot.send_message(message.chat.id, "❌ Failed to fetch your user info.", reply_markup=types.ReplyKeyboardRemove())
+            return
+        user_data = user_resp.json()
+        current_cycle = user_data.get("current_cycle")
+        if not current_cycle:
+            bot.send_message(message.chat.id, "⚠️ You don't have a current plan set.", reply_markup=types.ReplyKeyboardRemove())
+            return
+
+        days_resp = requests.get(f"{API_URL}cycle-days/?cycle_id={current_cycle}")
+        if days_resp.status_code != 200:
+            bot.send_message(message.chat.id, "❌ Failed to fetch plan days.", reply_markup=types.ReplyKeyboardRemove())
+            return
+
+        days = days_resp.json()
+        training_days = [d for d in days if d["is_training_day"]]
+
+        if not training_days:
+            bot.send_message(message.chat.id, "⚠️ Your plan has no training days.", reply_markup=types.ReplyKeyboardRemove())
+            return
+
+
+        user_plan_data[user_id] = {"training_days": training_days}
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+        for d in training_days:
+            day_label = f"Day {d['day_number']}: " + ", ".join(str(gid) for gid in d['muscle_groups'])
+            markup.add(day_label)
+        msg = bot.send_message(message.chat.id, "Choose day to start workout:", reply_markup=markup)
+        bot.register_next_step_handler(msg, process_select_plan_day)
+
+    elif text == "custom workout":
+        response = requests.get(f"{API_URL}muscle-groups/")
+        if response.status_code != 200:
+            bot.send_message(message.chat.id, "Error while fetching muscle groups.", reply_markup=types.ReplyKeyboardRemove())
+            return
+
+        groups = response.json()
+        user_plan_data[user_id] = {"available_groups": groups, "selected_groups": set()}
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
+        for g in groups:
+            markup.add(g["name"])
+        markup.add("✅ Done")
+        msg = bot.send_message(message.chat.id, "Choose muscle groups for your workout, then press '✅ Done':", reply_markup=markup)
+        bot.register_next_step_handler(msg, process_custom_muscle_groups)
+
+    else:
+        bot.send_message(message.chat.id, "Choose button from below.")
+        start_workout(message)
+
+
+def process_select_plan_day(message):
+    user_id = message.from_user.id
+    text = message.text.strip()
+    data = user_plan_data.get(user_id, {})
+    training_days = data.get("training_days", [])
+
+    selected_day = None
+    for day in training_days:
+        day_label = f"Day {day['day_number']}: " + ", ".join(str(gid) for gid in day['muscle_groups'])
+        if day_label == text:
+            selected_day = day
+            break
+
+    if not selected_day:
+        bot.send_message(message.chat.id, "Choose day from the buttons below.")
+        msg = bot.send_message(message.chat.id, "Choose day to start workout:")
+        bot.register_next_step_handler(msg, process_select_plan_day)
+        return
+
+    workout_payload = {
+        "telegram_id": user_id,
+        "is_from_plan": True,
+        "muscle_groups": selected_day["muscle_groups"]
+    }
+    resp = requests.post(f"{API_URL}workouts/", json=workout_payload)
+
+    if resp.status_code == 201:
+        workout = resp.json()
+        bot.send_message(message.chat.id, f"Workout started from your plan (Day {selected_day['day_number']}) ✅", reply_markup=types.ReplyKeyboardRemove())
+    else:
+        print("Workout creation failed:", resp.status_code, resp.text)
+        bot.send_message(message.chat.id, "❌ Failed to start workout. Please try again later.", reply_markup=types.ReplyKeyboardRemove())
+    
+    user_plan_data.pop(user_id, None)
+
+
+def process_custom_muscle_groups(message):
+    user_id = message.from_user.id
+    text = message.text.strip()
+    data = user_plan_data.get(user_id, {})
+    available = data.get("available_groups", [])
+    selected_set = data.get("selected_groups", set())
+
+    if text == "✅ Done":
+        if not selected_set:
+            bot.send_message(message.chat.id, "Choose at least 1 muscle group.")
+            msg = bot.send_message(message.chat.id, "Choose muscle groups for your workout, then press '✅ Done':")
+            bot.register_next_step_handler(msg, process_custom_muscle_groups)
+            return
+
+        group_ids = [g["id"] for g in available if g["name"] in selected_set]
+        workout_payload = {
+            "telegram_id": user_id,
+            "is_from_plan": False,
+            "muscle_groups": group_ids
+        }
+        resp = requests.post(f"{API_URL}workouts/", json=workout_payload)
+        if resp.status_code == 201:
+            workout = resp.json()
+            bot.send_message(message.chat.id, f"Custom workout started ✅", reply_markup=types.ReplyKeyboardRemove())
+        else:
+            print("Custom workout creation failed:", resp.status_code, resp.text)
+            bot.send_message(message.chat.id, "❌ Failed to start workout. Please try again later.", reply_markup=types.ReplyKeyboardRemove())
+        user_plan_data.pop(user_id, None)
+
+    else:
+        valid_names = [g["name"] for g in available]
+        if text not in valid_names:
+            bot.send_message(message.chat.id, "Choose from buttons below.")
+        else:
+            selected_set.add(text)
+        msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
+        bot.register_next_step_handler(msg, process_custom_muscle_groups)
 
 
 if __name__ == '__main__':

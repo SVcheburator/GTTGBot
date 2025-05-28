@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from datetime import datetime
 from .models import User, MuscleGroup, Exercise, TrainingCycle, CycleDay, Workout, WorkoutExercise
 
 
@@ -52,7 +53,15 @@ class WorkoutExerciseSerializer(serializers.ModelSerializer):
 class WorkoutSerializer(serializers.ModelSerializer):
     exercises = WorkoutExerciseSerializer(many=True, read_only=True)
     muscle_groups = MuscleGroupSerializer(many=True, read_only=True)
+    telegram_id = serializers.IntegerField(write_only=True, required=False)
 
     class Meta:
         model = Workout
-        fields = ['id', 'date', 'is_from_plan', 'muscle_groups', 'exercises']
+        fields = ['id', 'date', 'user', 'telegram_id', 'is_from_plan', 'muscle_groups', 'exercises']
+        read_only_fields = ['id', 'date']
+    
+    def to_representation(self, instance):
+        ret = super().to_representation(instance)
+        if isinstance(instance.date, datetime):
+            ret['date'] = instance.date.date().isoformat()
+        return ret
