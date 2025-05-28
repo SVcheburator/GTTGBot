@@ -1,5 +1,5 @@
+import datetime
 from django.db import models
-from django.utils import timezone
 
 
 class User(models.Model):
@@ -51,7 +51,7 @@ class CycleDay(models.Model):
 
 class Workout(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='workouts')
-    date = models.DateField(default=timezone.now)
+    date = models.DateField(default=datetime.date.today)
     is_from_plan = models.BooleanField(default=True)
     muscle_groups = models.ManyToManyField(MuscleGroup, blank=True)
 
