@@ -91,6 +91,28 @@ class WorkoutExerciseViewSet(viewsets.ModelViewSet):
     queryset = WorkoutExercise.objects.all()
     serializer_class = WorkoutExerciseSerializer
 
+    def create(self, request, *args, **kwargs):
+        workout_id = request.data.get('workout')
+        exercise_id = request.data.get('exercise')
+        sets = request.data.get('sets')
+        reps = request.data.get('reps')
+        weight = request.data.get('weight')
+
+        if not (workout_id and exercise_id and sets and reps):
+            return Response({'error': 'Missing fields'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            workout = Workout.objects.get(id=workout_id)
+            exercise = Exercise.objects.get(id=exercise_id)
+        except (Workout.DoesNotExist, Exercise.DoesNotExist):
+            return Response({'error': 'Workout or Exercise not found'}, status=404)
+
+        workout_exercise = WorkoutExercise.objects.create(
+            workout=workout, exercise=exercise, sets=sets, reps=reps, weight=weight
+        )
+
+        serializer = self.get_serializer(workout_exercise)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
 @api_view(['POST'])

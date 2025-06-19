@@ -457,11 +457,33 @@ def process_select_plan_day(message):
     if resp.status_code == 201:
         workout = resp.json()
         bot.send_message(message.chat.id, f"Workout started from your plan (Day {selected_day['day_number']}) ✅", reply_markup=types.ReplyKeyboardRemove())
+
+        user_plan_data[user_id] = user_plan_data.get(user_id, {})
+        user_plan_data[user_id]['current_workout_id'] = workout['id']
+
+        group_ids = selected_day["muscle_groups"]
+        exercises_resp = requests.get(f"{API_URL}exercises/")
+        if exercises_resp.status_code != 200:
+            bot.send_message(message.chat.id, "❌ Failed to fetch exercises.")
+            return
+
+        all_exercises = exercises_resp.json()
+        workout_exercises = [ex for ex in all_exercises if ex["muscle_group"]["id"] in group_ids]
+
+        if not workout_exercises:
+            bot.send_message(message.chat.id, "⚠️ No exercises found for selected groups.")
+            return
+
+        user_plan_data[user_id]['pending_exercises'] = workout_exercises
+        user_plan_data[user_id]['exercise_index'] = 0
+
+        bot.send_message(message.chat.id, "👇 Select an exercise to start logging sets:", reply_markup=types.ReplyKeyboardRemove())
+        show_exercise_choices(message)
+
     else:
         print("Workout creation failed:", resp.status_code, resp.text)
         bot.send_message(message.chat.id, "❌ Failed to start workout. Please try again later.", reply_markup=types.ReplyKeyboardRemove())
-    
-    user_plan_data.pop(user_id, None)
+        user_plan_data.pop(user_id, None)
 
 
 def process_custom_muscle_groups(message):
@@ -485,13 +507,36 @@ def process_custom_muscle_groups(message):
             "muscle_groups": group_ids
         }
         resp = requests.post(f"{API_URL}workouts/", json=workout_payload)
+
         if resp.status_code == 201:
             workout = resp.json()
             bot.send_message(message.chat.id, f"Custom workout started ✅", reply_markup=types.ReplyKeyboardRemove())
+
+            user_plan_data[user_id] = user_plan_data.get(user_id, {})
+            user_plan_data[user_id]['current_workout_id'] = workout['id']
+
+            exercises_resp = requests.get(f"{API_URL}exercises/")
+            if exercises_resp.status_code != 200:
+                bot.send_message(message.chat.id, "❌ Failed to fetch exercises.")
+                return
+
+            all_exercises = exercises_resp.json()
+            workout_exercises = [ex for ex in all_exercises if ex["muscle_group"]["id"] in group_ids]
+
+            if not workout_exercises:
+                bot.send_message(message.chat.id, "⚠️ No exercises found for selected groups.")
+                return
+
+            user_plan_data[user_id]['pending_exercises'] = workout_exercises
+            user_plan_data[user_id]['exercise_index'] = 0
+
+            bot.send_message(message.chat.id, "👇 Select an exercise to start logging sets:", reply_markup=types.ReplyKeyboardRemove())
+            show_exercise_choices(message)
+
         else:
             print("Custom workout creation failed:", resp.status_code, resp.text)
             bot.send_message(message.chat.id, "❌ Failed to start workout. Please try again later.", reply_markup=types.ReplyKeyboardRemove())
-        user_plan_data.pop(user_id, None)
+            user_plan_data.pop(user_id, None)
 
     else:
         valid_names = [g["name"] for g in available]
@@ -501,6 +546,79 @@ def process_custom_muscle_groups(message):
             selected_set.add(text)
         msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
         bot.register_next_step_handler(msg, process_custom_muscle_groups)
+
+
+def show_exercise_choices(message):
+    user_id = message.from_user.id
+    exercises = user_plan_data[user_id].get("pending_exercises", [])
+
+    markup = types.InlineKeyboardMarkup()
+    for ex in exercises:
+        markup.add(types.InlineKeyboardButton(text=ex["name"], callback_data=f"choose_ex:{ex['id']}"))
+    
+    markup.add(types.InlineKeyboardButton("✅ Finish workout", callback_data="finish_workout"))
+
+    bot.send_message(message.chat.id, "🏋️ Choose an exercise to log a set:", reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("choose_ex:"))
+def process_exercise_choice(call):
+    user_id = call.from_user.id
+    exercise_id = int(call.data.split(":")[1])
+    user_plan_data[user_id]['current_exercise_id'] = exercise_id
+
+    bot.send_message(call.message.chat.id, "Enter weight for the set (kg):")
+    bot.register_next_step_handler(call.message, process_set_weight)
+
+
+def process_set_weight(message):
+    user_id = message.from_user.id
+    try:
+        weight = float(message.text.strip())
+    except ValueError:
+        bot.send_message(message.chat.id, "❌ Please enter a valid weight (number).")
+        bot.register_next_step_handler(message, process_set_weight)
+        return
+
+    user_plan_data[user_id]["current_weight"] = weight
+    bot.send_message(message.chat.id, "Enter number of reps:")
+    bot.register_next_step_handler(message, process_set_reps)
+
+
+def process_set_reps(message):
+    user_id = message.from_user.id
+    try:
+        reps = int(message.text.strip())
+    except ValueError:
+        bot.send_message(message.chat.id, "❌ Please enter a valid number of reps.")
+        bot.register_next_step_handler(message, process_set_reps)
+        return
+
+    data = user_plan_data.get(user_id, {})
+    payload = {
+        "workout": data.get("current_workout_id"),
+        "exercise": data.get("current_exercise_id"),
+        "sets": 1,
+        "reps": reps,
+        "weight": data.get("current_weight")
+    }
+
+    resp = requests.post(f"{API_URL}workout-exercises/", json=payload)
+
+    if resp.status_code == 201:
+        bot.send_message(message.chat.id, "✅ Set logged successfully!")
+        show_exercise_choices(message)
+    else:
+        bot.send_message(message.chat.id, "❌ Failed to log set. Try again.")
+        bot.register_next_step_handler(message, process_set_weight)
+
+
+@bot.callback_query_handler(func=lambda call: call.data == "finish_workout")
+def finish_workout(call):
+    user_id = call.from_user.id
+    user_plan_data.pop(user_id, None)
+    bot.send_message(call.message.chat.id, "🏁 Workout completed! Well done 💪", reply_markup=types.ReplyKeyboardRemove())
+
 
 
 if __name__ == '__main__':
