@@ -94,11 +94,10 @@ class WorkoutExerciseViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         workout_id = request.data.get('workout')
         exercise_id = request.data.get('exercise')
-        sets = request.data.get('sets')
         reps = request.data.get('reps')
         weight = request.data.get('weight')
 
-        if not (workout_id and exercise_id and sets and reps):
+        if not (workout_id and exercise_id and reps):
             return Response({'error': 'Missing fields'}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
@@ -108,7 +107,7 @@ class WorkoutExerciseViewSet(viewsets.ModelViewSet):
             return Response({'error': 'Workout or Exercise not found'}, status=404)
 
         workout_exercise = WorkoutExercise.objects.create(
-            workout=workout, exercise=exercise, sets=sets, reps=reps, weight=weight
+            workout=workout, exercise=exercise, reps=reps, weight=weight
         )
 
         serializer = self.get_serializer(workout_exercise)

@@ -62,9 +62,8 @@ class Workout(models.Model):
 class WorkoutExercise(models.Model):
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE, related_name='exercises')
     exercise = models.ForeignKey(Exercise, on_delete=models.CASCADE)
-    sets = models.PositiveIntegerField()
     reps = models.PositiveIntegerField()
     weight = models.FloatField(default=0.0)
 
     def __str__(self):
-        return f"{self.workout} - {self.exercise.name}"
+        return f"{self.workout} - {self.exercise.name} ({self.weight}x{self.reps})"

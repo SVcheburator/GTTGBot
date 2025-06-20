@@ -598,7 +598,6 @@ def process_set_reps(message):
     payload = {
         "workout": data.get("current_workout_id"),
         "exercise": data.get("current_exercise_id"),
-        "sets": 1,
         "reps": reps,
         "weight": data.get("current_weight")
     }
