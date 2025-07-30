@@ -3,15 +3,37 @@ import requests
 import telebot
 from dotenv import load_dotenv
 from telebot import types
+import redis
+import json
 
 load_dotenv()
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 API_URL = os.getenv("API_URL")
 
+REDIS_URL = os.getenv("REDIS_URL")
+redis_client = redis.Redis.from_url(REDIS_URL, decode_responses=True)
+
 bot = telebot.TeleBot(TOKEN)
 
+# Redis utility functions
+def get_user_data(user_id):
+    data = redis_client.get(f"user:{user_id}:data")
+    return json.loads(data) if data else {}
 
+
+def set_user_data(user_id, data):
+    redis_client.set(f"user:{user_id}:data", json.dumps(data))
+
+
+def pop_user_data(user_id):
+    key = f"user:{user_id}:data"
+    data = redis_client.get(key)
+    redis_client.delete(key)
+    return json.loads(data) if data else {}
+
+
+# Bot
 def get_or_create_user(telegram_id, username):
     url = f"{API_URL}auth-user/"
     response = requests.post(url, json={"telegram_id": telegram_id, "username": username})
@@ -41,19 +63,19 @@ def handle_help(message):
 
 
 # Creating a training plan
-user_plan_data = {}
-
 @bot.message_handler(commands=['createplan'])
 def start_create_plan(message):
     user_id = message.from_user.id
-    user_plan_data[user_id] = {}
+    set_user_data(user_id, {})
     msg = bot.send_message(message.chat.id, "let's create a new training plan for You\nWhat's the name of the plan?")
     bot.register_next_step_handler(msg, process_plan_name)
 
 
 def process_plan_name(message):
     user_id = message.from_user.id
-    user_plan_data[user_id]['name'] = message.text.strip()
+    data = get_user_data(user_id)
+    data['name'] = message.text.strip()
+    set_user_data(user_id, data)
     msg = bot.send_message(message.chat.id, "How long is Your training cycle going to be? (Days)")
     bot.register_next_step_handler(msg, process_plan_length)
 
@@ -64,9 +86,11 @@ def process_plan_length(message):
         length = int(message.text)
         if length < 1:
             raise ValueError()
-        user_plan_data[user_id]['length'] = length
-        user_plan_data[user_id]['days'] = []
-        user_plan_data[user_id]['current_day'] = 1
+        data = get_user_data(user_id)
+        data['length'] = length
+        data['days'] = []
+        data['current_day'] = 1
+        set_user_data(user_id, data)
         ask_day_type(message)
     except ValueError:
         msg = bot.send_message(message.chat.id, "Has to be a number.")
@@ -75,7 +99,8 @@ def process_plan_length(message):
 
 def ask_day_type(message):
     user_id = message.from_user.id
-    current_day = user_plan_data[user_id]['current_day']
+    data = get_user_data(user_id)
+    current_day = data['current_day']
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     markup.add("Training", "Rest day")
     msg = bot.send_message(message.chat.id, f"Day {current_day}: Training or Rest day?", reply_markup=markup)
@@ -85,20 +110,22 @@ def ask_day_type(message):
 def process_day_type(message):
     user_id = message.from_user.id
     text = message.text.lower().strip()
+    data = get_user_data(user_id)
 
     if text not in ["training", "rest day"]:
         bot.send_message(message.chat.id, "Choose the button ⬇️")
         return ask_day_type(message)
 
     is_training = text == "training"
-    current_day = user_plan_data[user_id]['current_day']
+    current_day = data['current_day']
 
     if is_training:
         response = requests.get(f"{API_URL}muscle-groups/")
         if response.status_code == 200:
             groups = response.json()
-            user_plan_data[user_id]['available_groups'] = groups
-            user_plan_data[user_id]['selected_groups'] = set()
+            data['available_groups'] = groups
+            data['selected_groups'] = []
+            set_user_data(user_id, data)
 
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
             for g in groups:
@@ -111,31 +138,34 @@ def process_day_type(message):
             bot.send_message(message.chat.id, "Error while getting muscle groups.")
             ask_day_type(message)
     else:
-        user_plan_data[user_id]['days'].append({
+        data['days'].append({
             "day_number": current_day,
             "is_training_day": False,
             "muscle_groups": []
         })
+        set_user_data(user_id, data)
         proceed_next_day(message)
 
 
 def process_muscle_groups(message):
     user_id = message.from_user.id
     text = message.text.strip()
-    available = user_plan_data[user_id].get("available_groups", [])
-    selected_set = user_plan_data[user_id]["selected_groups"]
+    data = get_user_data(user_id)
+    available = data.get("available_groups", [])
+    selected_list = data.get("selected_groups", [])
 
     if text == "✅ Done":
-        if not selected_set:
+        if not selected_list:
             bot.send_message(message.chat.id, "Choose at least 1 muscle group.")
             return ask_day_type(message)
-        group_ids = [g["id"] for g in available if g["name"] in selected_set]
-        current_day = user_plan_data[user_id]['current_day']
-        user_plan_data[user_id]['days'].append({
+        group_ids = [g["id"] for g in available if g["name"] in selected_list]
+        current_day = data['current_day']
+        data['days'].append({
             "day_number": current_day,
             "is_training_day": True,
             "muscle_groups": group_ids
         })
+        set_user_data(user_id, data)
 
         bot.send_message(message.chat.id, "Muscle groups chosen successfuly ✅", reply_markup=types.ReplyKeyboardRemove())
         proceed_next_day(message)
@@ -144,15 +174,20 @@ def process_muscle_groups(message):
         if text not in valid_names:
             bot.send_message(message.chat.id, "Choose from buttons below.")
         else:
-            selected_set.add(text)
+            if text not in selected_list:
+                selected_list.append(text)
+            data['selected_groups'] = selected_list
+            set_user_data(user_id, data)
         msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
         bot.register_next_step_handler(msg, process_muscle_groups)
 
 
 def proceed_next_day(message):
     user_id = message.from_user.id
-    user_plan_data[user_id]['current_day'] += 1
-    if user_plan_data[user_id]['current_day'] > user_plan_data[user_id]['length']:
+    data = get_user_data(user_id)
+    data['current_day'] += 1
+    set_user_data(user_id, data)
+    if data['current_day'] > data['length']:
         finalize_plan(message)
     else:
         ask_day_type(message)
@@ -160,7 +195,7 @@ def proceed_next_day(message):
 
 def finalize_plan(message):
     user_id = message.from_user.id
-    data = user_plan_data[user_id]
+    data = get_user_data(user_id)
 
     cycle_payload = {
         "name": data['name'],
@@ -174,6 +209,7 @@ def finalize_plan(message):
 
     cycle_id = response.json()['id']
     data['id'] = cycle_id
+    set_user_data(user_id, data)
 
     for day in data['days']:
         day_payload = {
@@ -189,7 +225,7 @@ def finalize_plan(message):
     summary_text = generate_plan_summary(data)
     bot.send_message(message.chat.id, summary_text, parse_mode="Markdown")
 
-    user_plan_data.pop(user_id, None)
+    pop_user_data(user_id)
 
 
 # Listing plan summary
@@ -399,8 +435,9 @@ def process_workout_type(message):
             bot.send_message(message.chat.id, "⚠️ Your plan has no training days.", reply_markup=types.ReplyKeyboardRemove())
             return
 
-
-        user_plan_data[user_id] = {"training_days": training_days}
+        data = get_user_data(user_id)
+        data["training_days"] = training_days
+        set_user_data(user_id, data)
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
         for d in training_days:
             day_label = f"Day {d['day_number']}: " + ", ".join(str(gid) for gid in d['muscle_groups'])
@@ -415,7 +452,10 @@ def process_workout_type(message):
             return
 
         groups = response.json()
-        user_plan_data[user_id] = {"available_groups": groups, "selected_groups": set()}
+        data = get_user_data(user_id)
+        data["available_groups"] = groups
+        data["selected_groups"] = []
+        set_user_data(user_id, data)
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
         for g in groups:
             markup.add(g["name"])
@@ -431,7 +471,7 @@ def process_workout_type(message):
 def process_select_plan_day(message):
     user_id = message.from_user.id
     text = message.text.strip()
-    data = user_plan_data.get(user_id, {})
+    data = get_user_data(user_id)
     training_days = data.get("training_days", [])
 
     selected_day = None
@@ -458,8 +498,9 @@ def process_select_plan_day(message):
         workout = resp.json()
         bot.send_message(message.chat.id, f"Workout started from your plan (Day {selected_day['day_number']}) ✅", reply_markup=types.ReplyKeyboardRemove())
 
-        user_plan_data[user_id] = user_plan_data.get(user_id, {})
-        user_plan_data[user_id]['current_workout_id'] = workout['id']
+        data = get_user_data(user_id)
+        data['current_workout_id'] = workout['id']
+        set_user_data(user_id, data)
 
         group_ids = selected_day["muscle_groups"]
         exercises_resp = requests.get(f"{API_URL}exercises/")
@@ -474,8 +515,9 @@ def process_select_plan_day(message):
             bot.send_message(message.chat.id, "⚠️ No exercises found for selected groups.")
             return
 
-        user_plan_data[user_id]['pending_exercises'] = workout_exercises
-        user_plan_data[user_id]['exercise_index'] = 0
+        data['pending_exercises'] = workout_exercises
+        data['exercise_index'] = 0
+        set_user_data(user_id, data)
 
         bot.send_message(message.chat.id, "👇 Select an exercise to start logging sets:", reply_markup=types.ReplyKeyboardRemove())
         show_exercise_choices(message)
@@ -483,24 +525,24 @@ def process_select_plan_day(message):
     else:
         print("Workout creation failed:", resp.status_code, resp.text)
         bot.send_message(message.chat.id, "❌ Failed to start workout. Please try again later.", reply_markup=types.ReplyKeyboardRemove())
-        user_plan_data.pop(user_id, None)
+        pop_user_data(user_id)
 
 
 def process_custom_muscle_groups(message):
     user_id = message.from_user.id
     text = message.text.strip()
-    data = user_plan_data.get(user_id, {})
+    data = get_user_data(user_id)
     available = data.get("available_groups", [])
-    selected_set = data.get("selected_groups", set())
+    selected_list = data.get("selected_groups", [])
 
     if text == "✅ Done":
-        if not selected_set:
+        if not selected_list:
             bot.send_message(message.chat.id, "Choose at least 1 muscle group.")
             msg = bot.send_message(message.chat.id, "Choose muscle groups for your workout, then press '✅ Done':")
             bot.register_next_step_handler(msg, process_custom_muscle_groups)
             return
 
-        group_ids = [g["id"] for g in available if g["name"] in selected_set]
+        group_ids = [g["id"] for g in available if g["name"] in selected_list]
         workout_payload = {
             "telegram_id": user_id,
             "is_from_plan": False,
@@ -512,8 +554,9 @@ def process_custom_muscle_groups(message):
             workout = resp.json()
             bot.send_message(message.chat.id, f"Custom workout started ✅", reply_markup=types.ReplyKeyboardRemove())
 
-            user_plan_data[user_id] = user_plan_data.get(user_id, {})
-            user_plan_data[user_id]['current_workout_id'] = workout['id']
+            data = get_user_data(user_id)
+            data['current_workout_id'] = workout['id']
+            set_user_data(user_id, data)
 
             exercises_resp = requests.get(f"{API_URL}exercises/")
             if exercises_resp.status_code != 200:
@@ -527,8 +570,9 @@ def process_custom_muscle_groups(message):
                 bot.send_message(message.chat.id, "⚠️ No exercises found for selected groups.")
                 return
 
-            user_plan_data[user_id]['pending_exercises'] = workout_exercises
-            user_plan_data[user_id]['exercise_index'] = 0
+            data['pending_exercises'] = workout_exercises
+            data['exercise_index'] = 0
+            set_user_data(user_id, data)
 
             bot.send_message(message.chat.id, "👇 Select an exercise to start logging sets:", reply_markup=types.ReplyKeyboardRemove())
             show_exercise_choices(message)
@@ -536,21 +580,25 @@ def process_custom_muscle_groups(message):
         else:
             print("Custom workout creation failed:", resp.status_code, resp.text)
             bot.send_message(message.chat.id, "❌ Failed to start workout. Please try again later.", reply_markup=types.ReplyKeyboardRemove())
-            user_plan_data.pop(user_id, None)
+            pop_user_data(user_id)
 
     else:
         valid_names = [g["name"] for g in available]
         if text not in valid_names:
             bot.send_message(message.chat.id, "Choose from buttons below.")
         else:
-            selected_set.add(text)
+            if text not in selected_list:
+                selected_list.append(text)
+            data['selected_groups'] = selected_list
+            set_user_data(user_id, data)
         msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
         bot.register_next_step_handler(msg, process_custom_muscle_groups)
 
 
 def show_exercise_choices(message):
     user_id = message.from_user.id
-    exercises = user_plan_data[user_id].get("pending_exercises", [])
+    data = get_user_data(user_id)
+    exercises = data.get("pending_exercises", [])
 
     markup = types.InlineKeyboardMarkup()
     for ex in exercises:
@@ -565,7 +613,9 @@ def show_exercise_choices(message):
 def process_exercise_choice(call):
     user_id = call.from_user.id
     exercise_id = int(call.data.split(":")[1])
-    user_plan_data[user_id]['current_exercise_id'] = exercise_id
+    data = get_user_data(user_id)
+    data['current_exercise_id'] = exercise_id
+    set_user_data(user_id, data)
 
     bot.send_message(call.message.chat.id, "Enter weight for the set (kg):")
     bot.register_next_step_handler(call.message, process_set_weight)
@@ -580,7 +630,9 @@ def process_set_weight(message):
         bot.register_next_step_handler(message, process_set_weight)
         return
 
-    user_plan_data[user_id]["current_weight"] = weight
+    data = get_user_data(user_id)
+    data["current_weight"] = weight
+    set_user_data(user_id, data)
     bot.send_message(message.chat.id, "Enter number of reps:")
     bot.register_next_step_handler(message, process_set_reps)
 
@@ -594,7 +646,7 @@ def process_set_reps(message):
         bot.register_next_step_handler(message, process_set_reps)
         return
 
-    data = user_plan_data.get(user_id, {})
+    data = get_user_data(user_id)
     payload = {
         "workout": data.get("current_workout_id"),
         "exercise": data.get("current_exercise_id"),
@@ -615,7 +667,7 @@ def process_set_reps(message):
 @bot.callback_query_handler(func=lambda call: call.data == "finish_workout")
 def finish_workout(call):
     user_id = call.from_user.id
-    user_plan_data.pop(user_id, None)
+    pop_user_data(user_id)
     bot.send_message(call.message.chat.id, "🏁 Workout completed! Well done 💪", reply_markup=types.ReplyKeyboardRemove())
 
 
