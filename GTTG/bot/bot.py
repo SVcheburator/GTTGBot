@@ -435,13 +435,26 @@ def process_workout_type(message):
             bot.send_message(message.chat.id, "⚠️ Your plan has no training days.", reply_markup=types.ReplyKeyboardRemove())
             return
 
+        group_resp = requests.get(f"{API_URL}muscle-groups/")
+        if group_resp.status_code != 200:
+            bot.send_message(message.chat.id, "❌ Failed to fetch muscle groups.", reply_markup=types.ReplyKeyboardRemove())
+            return
+        group_map = {g['id']: g['name'] for g in group_resp.json()}
+
         data = get_user_data(user_id)
         data["training_days"] = training_days
-        set_user_data(user_id, data)
+        day_number_to_label = {}
+        day_number_to_day = {}
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
         for d in training_days:
-            day_label = f"Day {d['day_number']}: " + ", ".join(str(gid) for gid in d['muscle_groups'])
+            group_names = [group_map.get(gid, f"ID:{gid}") for gid in d['muscle_groups']]
+            day_label = f"Day {d['day_number']}: " + ", ".join(group_names)
             markup.add(day_label)
+            day_number_to_label[d['day_number']] = day_label
+            day_number_to_day[d['day_number']] = d
+        data["day_number_to_label"] = day_number_to_label
+        data["day_number_to_day"] = day_number_to_day
+        set_user_data(user_id, data)
         msg = bot.send_message(message.chat.id, "Choose day to start workout:", reply_markup=markup)
         bot.register_next_step_handler(msg, process_select_plan_day)
 
@@ -472,18 +485,23 @@ def process_select_plan_day(message):
     user_id = message.from_user.id
     text = message.text.strip()
     data = get_user_data(user_id)
-    training_days = data.get("training_days", [])
+    day_number_to_label = data.get("day_number_to_label", {})
+    day_number_to_day = data.get("day_number_to_day", {})
 
-    selected_day = None
-    for day in training_days:
-        day_label = f"Day {day['day_number']}: " + ", ".join(str(gid) for gid in day['muscle_groups'])
-        if day_label == text:
-            selected_day = day
+    selected_day_number = None
+    for num, label in day_number_to_label.items():
+        if label == text:
+            selected_day_number = num
             break
+
+    selected_day = day_number_to_day.get(selected_day_number)
 
     if not selected_day:
         bot.send_message(message.chat.id, "Choose day from the buttons below.")
-        msg = bot.send_message(message.chat.id, "Choose day to start workout:")
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+        for label in day_number_to_label.values():
+            markup.add(label)
+        msg = bot.send_message(message.chat.id, "Choose day to start workout:", reply_markup=markup)
         bot.register_next_step_handler(msg, process_select_plan_day)
         return
 
