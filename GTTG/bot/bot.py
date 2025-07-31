@@ -33,6 +33,42 @@ def pop_user_data(user_id):
     return json.loads(data) if data else {}
 
 
+# Caching
+CACHE_TTL = 3600
+
+def cache_get(key):
+    data = redis_client.get(key)
+    return json.loads(data) if data else None
+
+
+def cache_set(key, value, ttl=CACHE_TTL):
+    redis_client.setex(key, ttl, json.dumps(value))
+
+
+def get_cached_muscle_groups():
+    key = "cache:muscle_groups"
+    data = cache_get(key)
+    if data is not None:
+        return data
+    resp = requests.get(f"{API_URL}muscle-groups/")
+    if resp.status_code == 200:
+        cache_set(key, resp.json())
+        return resp.json()
+    return []
+
+
+def get_cached_exercises():
+    key = "cache:exercises"
+    data = cache_get(key)
+    if data is not None:
+        return data
+    resp = requests.get(f"{API_URL}exercises/")
+    if resp.status_code == 200:
+        cache_set(key, resp.json())
+        return resp.json()
+    return []
+
+
 # Bot
 def get_or_create_user(telegram_id, username):
     url = f"{API_URL}auth-user/"
@@ -120,9 +156,8 @@ def process_day_type(message):
     current_day = data['current_day']
 
     if is_training:
-        response = requests.get(f"{API_URL}muscle-groups/")
-        if response.status_code == 200:
-            groups = response.json()
+        groups = get_cached_muscle_groups()
+        if groups:
             data['available_groups'] = groups
             data['selected_groups'] = []
             set_user_data(user_id, data)
@@ -231,11 +266,7 @@ def finalize_plan(message):
 # Listing plan summary
 def generate_plan_summary(plan_data, days_data=None):
     try:
-        group_resp = requests.get(f"{API_URL}muscle-groups/")
-        if group_resp.status_code != 200:
-            return "Error while getting muscle groups."
-
-        group_map = {g['id']: g['name'] for g in group_resp.json()}
+        group_map = {g['id']: g['name'] for g in get_cached_muscle_groups()}
         summary = f"📝 *Here is your plan \"{plan_data['name']}\":*\n\n"
 
         if days_data is None:
@@ -435,11 +466,7 @@ def process_workout_type(message):
             bot.send_message(message.chat.id, "⚠️ Your plan has no training days.", reply_markup=types.ReplyKeyboardRemove())
             return
 
-        group_resp = requests.get(f"{API_URL}muscle-groups/")
-        if group_resp.status_code != 200:
-            bot.send_message(message.chat.id, "❌ Failed to fetch muscle groups.", reply_markup=types.ReplyKeyboardRemove())
-            return
-        group_map = {g['id']: g['name'] for g in group_resp.json()}
+        group_map = {g['id']: g['name'] for g in get_cached_muscle_groups()}
 
         data = get_user_data(user_id)
         data["training_days"] = training_days
@@ -459,12 +486,10 @@ def process_workout_type(message):
         bot.register_next_step_handler(msg, process_select_plan_day)
 
     elif text == "custom workout":
-        response = requests.get(f"{API_URL}muscle-groups/")
-        if response.status_code != 200:
+        groups = get_cached_muscle_groups()
+        if not groups:
             bot.send_message(message.chat.id, "Error while fetching muscle groups.", reply_markup=types.ReplyKeyboardRemove())
             return
-
-        groups = response.json()
         data = get_user_data(user_id)
         data["available_groups"] = groups
         data["selected_groups"] = []
@@ -521,12 +546,7 @@ def process_select_plan_day(message):
         set_user_data(user_id, data)
 
         group_ids = selected_day["muscle_groups"]
-        exercises_resp = requests.get(f"{API_URL}exercises/")
-        if exercises_resp.status_code != 200:
-            bot.send_message(message.chat.id, "❌ Failed to fetch exercises.")
-            return
-
-        all_exercises = exercises_resp.json()
+        all_exercises = get_cached_exercises()
         workout_exercises = [ex for ex in all_exercises if ex["muscle_group"]["id"] in group_ids]
 
         if not workout_exercises:
@@ -576,12 +596,7 @@ def process_custom_muscle_groups(message):
             data['current_workout_id'] = workout['id']
             set_user_data(user_id, data)
 
-            exercises_resp = requests.get(f"{API_URL}exercises/")
-            if exercises_resp.status_code != 200:
-                bot.send_message(message.chat.id, "❌ Failed to fetch exercises.")
-                return
-
-            all_exercises = exercises_resp.json()
+            all_exercises = get_cached_exercises()
             workout_exercises = [ex for ex in all_exercises if ex["muscle_group"]["id"] in group_ids]
 
             if not workout_exercises:
