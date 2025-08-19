@@ -639,7 +639,9 @@ def show_exercise_choices(message):
     
     markup.add(types.InlineKeyboardButton("✅ Finish workout", callback_data="finish_workout"))
 
-    bot.send_message(message.chat.id, "🏋️ Choose an exercise to log a set:", reply_markup=markup)
+    sent = bot.send_message(message.chat.id, "🏋️ Choose an exercise to log a set:", reply_markup=markup)
+    data['last_exercise_choice_msg_id'] = sent.message_id
+    set_user_data(user_id, data)
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("choose_ex:"))
@@ -649,6 +651,21 @@ def process_exercise_choice(call):
     data = get_user_data(user_id)
     data['current_exercise_id'] = exercise_id
     set_user_data(user_id, data)
+
+    exercise = next((ex for ex in data.get("pending_exercises", []) if ex["id"] == exercise_id), None)
+    exercise_name = exercise["name"] if exercise else "Exercise"
+
+    last_msg_id = data.get('last_exercise_choice_msg_id')
+    if last_msg_id:
+        try:
+            bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=last_msg_id,
+                text=f"🏋️ {exercise_name}",
+                reply_markup=None
+            )
+        except Exception:
+            pass
 
     bot.send_message(call.message.chat.id, "Enter weight for the set (kg):")
     bot.register_next_step_handler(call.message, process_set_weight)
@@ -700,6 +717,12 @@ def process_set_reps(message):
 @bot.callback_query_handler(func=lambda call: call.data == "finish_workout")
 def finish_workout(call):
     user_id = call.from_user.id
+    last_msg_id = get_user_data(user_id).get('last_exercise_choice_msg_id')
+    if last_msg_id:
+        try:
+            bot.delete_message(call.message.chat.id, last_msg_id)
+        except Exception:
+            pass
     pop_user_data(user_id)
     bot.send_message(call.message.chat.id, "🏁 Workout completed! Well done 💪", reply_markup=types.ReplyKeyboardRemove())
 
