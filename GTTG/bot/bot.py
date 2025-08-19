@@ -557,7 +557,6 @@ def process_select_plan_day(message):
         data['exercise_index'] = 0
         set_user_data(user_id, data)
 
-        bot.send_message(message.chat.id, "👇 Select an exercise to start logging sets:", reply_markup=types.ReplyKeyboardRemove())
         show_exercise_choices(message)
 
     else:
@@ -607,7 +606,6 @@ def process_custom_muscle_groups(message):
             data['exercise_index'] = 0
             set_user_data(user_id, data)
 
-            bot.send_message(message.chat.id, "👇 Select an exercise to start logging sets:", reply_markup=types.ReplyKeyboardRemove())
             show_exercise_choices(message)
 
         else:
