@@ -401,31 +401,66 @@ def handle_set_current_plan(call):
 @bot.callback_query_handler(func=lambda call: call.data.startswith("delete_plan_confirm_"))
 def confirm_delete_plan(call):
     plan_id = call.data.split("delete_plan_confirm_")[1]
+    user_id = call.from_user.id
+    data = get_user_data(user_id)
 
     markup = types.InlineKeyboardMarkup()
     markup.add(
         types.InlineKeyboardButton("🗑️ Yes, delete", callback_data=f"delete_plan_{plan_id}"),
         types.InlineKeyboardButton("❌ No, cancel", callback_data="cancel_delete")
     )
-    bot.send_message(call.message.chat.id, "Are You sure You want to delete this training plan?", reply_markup=markup)
+    sent = bot.send_message(call.message.chat.id, "Are You sure You want to delete this training plan?", reply_markup=markup)
     bot.answer_callback_query(call.id)
+
+    data['delete_plan_confirmation_msg_id'] = sent.message_id
+    set_user_data(user_id, data)
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("delete_plan_"))
 def handle_delete_plan(call):
     plan_id = call.data.split("delete_plan_")[1]
+    user_id = call.from_user.id
+    data = get_user_data(user_id)
+    last_del_conf_msg_id = data.get('delete_plan_confirmation_msg_id')
     response = requests.delete(f"{API_URL}training-cycles/{plan_id}/")
+    
+    if last_del_conf_msg_id: 
+        if response.status_code == 204:
+            deletion_text = "✅ Training plan was deleted."
+        else:
+            deletion_text = "❌ Error while deleting plan."
 
-    if response.status_code == 204:
-        bot.send_message(call.message.chat.id, "✅ Training plan was deleted.")
+        try:
+            bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=last_del_conf_msg_id,
+                text=deletion_text,
+                reply_markup=None
+            )
+        except Exception:
+            pass
     else:
         bot.send_message(call.message.chat.id, "❌ Error while deleting plan.")
+
     bot.answer_callback_query(call.id)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "cancel_delete")
 def cancel_delete(call):
-    bot.send_message(call.message.chat.id, "❎ Deleting canceled.")
+    user_id = call.from_user.id
+    data = get_user_data(user_id)
+    last_del_conf_msg_id = data.get('delete_plan_confirmation_msg_id')
+    if last_del_conf_msg_id:
+        try:
+            bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=last_del_conf_msg_id,
+                text="❎ Deleting canceled.",
+                reply_markup=None
+            )
+        except Exception:
+            pass
+    
     bot.answer_callback_query(call.id)
 
 
