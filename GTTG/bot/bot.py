@@ -668,7 +668,7 @@ def show_exercise_choices(message):
 
     markup = types.InlineKeyboardMarkup()
     for ex in exercises:
-        markup.add(types.InlineKeyboardButton(text=ex["name"], callback_data=f"choose_ex:{ex['id']}"))
+        markup.add(types.InlineKeyboardButton(text=ex["name"], callback_data=f"ex_choice_{ex['id']}"))
     
     markup.add(types.InlineKeyboardButton("✅ Finish workout", callback_data="finish_workout"))
 
@@ -677,10 +677,10 @@ def show_exercise_choices(message):
     set_user_data(user_id, data)
 
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith("choose_ex:"))
+@bot.callback_query_handler(func=lambda call: call.data.startswith("ex_choice_"))
 def process_exercise_choice(call):
     user_id = call.from_user.id
-    exercise_id = int(call.data.split(":")[1])
+    exercise_id = int(call.data.split("ex_choice_")[1])
     data = get_user_data(user_id)
     data['current_exercise_id'] = exercise_id
     set_user_data(user_id, data)
