@@ -195,15 +195,21 @@ def process_muscle_groups(message):
             return ask_day_type(message)
         group_ids = [g["id"] for g in available if g["name"] in selected_list]
         current_day = data['current_day']
-        data['days'].append({
-            "day_number": current_day,
-            "is_training_day": True,
-            "muscle_groups": group_ids
-        })
+        all_exercises = get_cached_exercises()
+        exercises_for_groups = [ex for ex in all_exercises if ex["muscle_group"]["id"] in group_ids]
+        if not exercises_for_groups:
+            bot.send_message(message.chat.id, "No exercises found for selected muscle groups.")
+            proceed_next_day(message)
+            return
+        data['pending_exercises_for_day'] = exercises_for_groups
+        data['selected_exercises_for_day'] = []
         set_user_data(user_id, data)
-
-        bot.send_message(message.chat.id, "Muscle groups chosen successfuly ✅", reply_markup=types.ReplyKeyboardRemove())
-        proceed_next_day(message)
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
+        for ex in exercises_for_groups:
+            markup.add(ex["name"])
+        markup.add("✅ Done")
+        msg = bot.send_message(message.chat.id, "Choose all possible exercises you might be doing on this day, then press '✅ Done':", reply_markup=markup)
+        bot.register_next_step_handler(msg, process_exercises_for_day)
     else:
         valid_names = [g["name"] for g in available]
         if text not in valid_names:
@@ -215,6 +221,51 @@ def process_muscle_groups(message):
             set_user_data(user_id, data)
         msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
         bot.register_next_step_handler(msg, process_muscle_groups)
+
+
+def process_exercises_for_day(message):
+    user_id = message.from_user.id
+    text = message.text.strip()
+    data = get_user_data(user_id)
+    available_ex = data.get("pending_exercises_for_day", [])
+    selected_ex = data.get("selected_exercises_for_day", [])
+
+    if text == "✅ Done":
+        if not selected_ex:
+            bot.send_message(message.chat.id, "Choose at least 1 exercise.")
+            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
+            for ex in available_ex:
+                markup.add(ex["name"])
+            markup.add("✅ Done")
+            msg = bot.send_message(message.chat.id, "Choose all possible exercises you might be doing on this day, then press '✅ Done':", reply_markup=markup)
+            bot.register_next_step_handler(msg, process_exercises_for_day)
+            return
+
+        group_ids = [g["id"] for g in data.get("available_groups", []) if g["name"] in data.get("selected_groups",[])]
+        ex_ids = [ex["id"] for ex in available_ex if ex["name"] in selected_ex]
+        current_day = data['current_day']
+        data['days'].append({
+            "day_number": current_day,
+            "is_training_day": True,
+            "muscle_groups": group_ids,
+            "default_exercises": ex_ids
+        })
+        data.pop('pending_exercises_for_day', None)
+        data.pop('selected_exercises_for_day', None)
+        set_user_data(user_id, data)
+        bot.send_message(message.chat.id, "Exercises chosen successfully ✅", reply_markup=types.ReplyKeyboardRemove())
+        proceed_next_day(message)
+    else:
+        valid_names = [ex["name"] for ex in available_ex]
+        if text not in valid_names:
+            bot.send_message(message.chat.id, "Choose from buttons below.")
+        else:
+            if text not in selected_ex:
+                selected_ex.append(text)
+            data['selected_exercises_for_day'] = selected_ex
+            set_user_data(user_id, data)
+        msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
+        bot.register_next_step_handler(msg, process_exercises_for_day)
 
 
 def proceed_next_day(message):
@@ -253,6 +304,8 @@ def finalize_plan(message):
             "is_training_day": day['is_training_day'],
             "muscle_groups": day['muscle_groups']
         }
+        if day.get("default_exercises") is not None:
+            day_payload["exercises"] = day["default_exercises"]
         requests.post(f"{API_URL}cycle-days/", json=day_payload)
 
     bot.send_message(message.chat.id, f"Plan created ✅", reply_markup=types.ReplyKeyboardRemove())

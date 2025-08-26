@@ -60,6 +60,16 @@ class CycleDayViewSet(viewsets.ModelViewSet):
 
         return queryset
 
+    def create(self, request, *args, **kwargs):
+        default_exercises = request.data.pop("exercises", None)
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        instance = serializer.save()
+        if default_exercises is not None:
+            instance.default_exercises.set(default_exercises)
+        headers = self.get_success_headers(serializer.data)
+        return Response(self.get_serializer(instance).data, status=status.HTTP_201_CREATED, headers=headers)
+
 
 class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()

@@ -41,6 +41,7 @@ class CycleDay(models.Model):
     day_number = models.PositiveIntegerField()
     is_training_day = models.BooleanField(default=True)
     muscle_groups = models.ManyToManyField(MuscleGroup, blank=True)
+    default_exercises = models.ManyToManyField(Exercise, blank=True)
 
     class Meta:
         unique_together = ('cycle', 'day_number')

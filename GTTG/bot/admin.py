@@ -18,3 +18,9 @@ class ExerciseAdmin(admin.ModelAdmin):
 class TrainingCycleAdmin(admin.ModelAdmin):
     list_display = ['name', 'user']
     search_fields = ['name']
+
+
+@admin.register(CycleDay)
+class CycleDayAdmin(admin.ModelAdmin):
+    list_display = ['cycle', 'day_number', 'is_training_day']
+    filter_horizontal = ['muscle_groups', 'default_exercises']
