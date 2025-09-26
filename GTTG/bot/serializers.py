@@ -24,9 +24,13 @@ class ExerciseSerializer(serializers.ModelSerializer):
 
 
 class CycleDaySerializer(serializers.ModelSerializer):
+    default_exercises = serializers.PrimaryKeyRelatedField(
+        many=True, queryset=Exercise.objects.all(), required=False
+    )
+
     class Meta:
         model = CycleDay
-        fields = ['id', 'cycle', 'day_number', 'is_training_day', 'muscle_groups']
+        fields = ['id', 'cycle', 'day_number', 'is_training_day', 'muscle_groups', 'default_exercises']
 
 
 class TrainingCycleSerializer(serializers.ModelSerializer):

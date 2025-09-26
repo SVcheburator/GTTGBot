@@ -61,7 +61,7 @@ class CycleDayViewSet(viewsets.ModelViewSet):
         return queryset
 
     def create(self, request, *args, **kwargs):
-        default_exercises = request.data.pop("exercises", None)
+        default_exercises = request.data.pop("default_exercises", None)
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         instance = serializer.save()

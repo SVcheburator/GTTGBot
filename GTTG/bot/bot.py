@@ -305,7 +305,7 @@ def finalize_plan(message):
             "muscle_groups": day['muscle_groups']
         }
         if day.get("default_exercises") is not None:
-            day_payload["exercises"] = day["default_exercises"]
+            day_payload["default_exercises"] = day["default_exercises"]
         requests.post(f"{API_URL}cycle-days/", json=day_payload)
 
     bot.send_message(message.chat.id, f"Plan created ✅", reply_markup=types.ReplyKeyboardRemove())
@@ -633,12 +633,12 @@ def process_select_plan_day(message):
         data['current_workout_id'] = workout['id']
         set_user_data(user_id, data)
 
-        group_ids = selected_day["muscle_groups"]
+        default_ex_ids = selected_day.get("default_exercises", [])
         all_exercises = get_cached_exercises()
-        workout_exercises = [ex for ex in all_exercises if ex["muscle_group"]["id"] in group_ids]
+        workout_exercises = [ex for ex in all_exercises if ex["id"] in default_ex_ids]
 
         if not workout_exercises:
-            bot.send_message(message.chat.id, "⚠️ No exercises found for selected groups.")
+            bot.send_message(message.chat.id, "⚠️ No exercises found for this day.")
             return
 
         data['pending_exercises'] = workout_exercises
