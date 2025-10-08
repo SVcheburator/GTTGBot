@@ -69,6 +69,17 @@ def get_cached_exercises():
     return []
 
 
+# Pagination
+EXERCISES_PAGE_SIZE = 15
+
+def paginate_list(items, page, size):
+    total_pages = max(1, (len(items) + size - 1) // size)
+    page = max(0, min(page, total_pages - 1))
+    start = page * size
+    end = start + size
+    return items[start:end], page, total_pages
+
+
 # Bot
 def get_or_create_user(telegram_id, username):
     url = f"{API_URL}auth-user/"
@@ -203,13 +214,9 @@ def process_muscle_groups(message):
             return
         data['pending_exercises_for_day'] = exercises_for_groups
         data['selected_exercises_for_day'] = []
+        data['exercise_selection_page'] = 0
         set_user_data(user_id, data)
-        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
-        for ex in exercises_for_groups:
-            markup.add(ex["name"])
-        markup.add("✅ Done")
-        msg = bot.send_message(message.chat.id, "Choose all possible exercises you might be doing on this day, then press '✅ Done':", reply_markup=markup)
-        bot.register_next_step_handler(msg, process_exercises_for_day)
+        show_day_exercises_page(message, 0)
     else:
         valid_names = [g["name"] for g in available]
         if text not in valid_names:
@@ -229,18 +236,24 @@ def process_exercises_for_day(message):
     data = get_user_data(user_id)
     available_ex = data.get("pending_exercises_for_day", [])
     selected_ex = data.get("selected_exercises_for_day", [])
+    page = data.get("exercise_selection_page", 0)
+
+    if text.startswith("✔ "):
+        text = text[2:].strip()
+
+    if text in ["⬅️ Prev", "➡️ Next"]:
+        if text == "⬅️ Prev":
+            page -= 1
+        else:
+            page += 1
+        show_day_exercises_page(message, page)
+        return
 
     if text == "✅ Done":
         if not selected_ex:
             bot.send_message(message.chat.id, "Choose at least 1 exercise.")
-            markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
-            for ex in available_ex:
-                markup.add(ex["name"])
-            markup.add("✅ Done")
-            msg = bot.send_message(message.chat.id, "Choose all possible exercises you might be doing on this day, then press '✅ Done':", reply_markup=markup)
-            bot.register_next_step_handler(msg, process_exercises_for_day)
+            show_day_exercises_page(message, page)
             return
-
         group_ids = [g["id"] for g in data.get("available_groups", []) if g["name"] in data.get("selected_groups",[])]
         ex_ids = [ex["id"] for ex in available_ex if ex["name"] in selected_ex]
         current_day = data['current_day']
@@ -264,8 +277,7 @@ def process_exercises_for_day(message):
                 selected_ex.append(text)
             data['selected_exercises_for_day'] = selected_ex
             set_user_data(user_id, data)
-        msg = bot.send_message(message.chat.id, "Choose more or press '✅ Done'")
-        bot.register_next_step_handler(msg, process_exercises_for_day)
+        show_day_exercises_page(message, page)
 
 
 def proceed_next_day(message):
@@ -643,8 +655,8 @@ def process_select_plan_day(message):
 
         data['pending_exercises'] = workout_exercises
         data['exercise_index'] = 0
+        data['exercise_choice_page'] = 0
         set_user_data(user_id, data)
-
         show_exercise_choices(message)
 
     else:
@@ -692,8 +704,8 @@ def process_custom_muscle_groups(message):
 
             data['pending_exercises'] = workout_exercises
             data['exercise_index'] = 0
+            data['exercise_choice_page'] = 0
             set_user_data(user_id, data)
-
             show_exercise_choices(message)
 
         else:
@@ -714,20 +726,96 @@ def process_custom_muscle_groups(message):
         bot.register_next_step_handler(msg, process_custom_muscle_groups)
 
 
+def show_day_exercises_page(message, page=0):
+    user_id = message.from_user.id
+    data = get_user_data(user_id)
+    all_ex = data.get('pending_exercises_for_day', [])
+    current_selected = data.get('selected_exercises_for_day', [])
+    page_slice, page, total_pages = paginate_list(all_ex, page, EXERCISES_PAGE_SIZE)
+
+    data['exercise_selection_page'] = page
+    set_user_data(user_id, data)
+
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
+    for ex in page_slice:
+        name = ex["name"]
+        display = f"✔ {name}" if name in current_selected else name
+        markup.add(display)
+    nav_row = []
+    if total_pages > 1 and page > 0:
+        nav_row.append("⬅️ Prev")
+    if total_pages > 1 and page < total_pages - 1:
+        nav_row.append("➡️ Next")
+    if nav_row:
+        markup.add(*nav_row)
+    markup.add("✅ Done")
+    msg = bot.send_message(
+        message.chat.id,
+        f"Choose exercises (page {page+1}/{total_pages}), then '✅ Done':",
+        reply_markup=markup
+    )
+
+    bot.register_next_step_handler(msg, process_exercises_for_day)
+
+
+def build_exercise_choice_markup(user_id):
+    data = get_user_data(user_id)
+    exercises = data.get("pending_exercises", [])
+    page = data.get("exercise_choice_page", 0)
+    slice_items, page, total_pages = paginate_list(exercises, page, EXERCISES_PAGE_SIZE)
+    data['exercise_choice_page'] = page
+    set_user_data(user_id, data)
+
+    markup = types.InlineKeyboardMarkup()
+    for ex in slice_items:
+        markup.add(types.InlineKeyboardButton(text=ex["name"], callback_data=f"ex_choice_{ex['id']}"))
+    nav_buttons = []
+    if total_pages > 1 and page > 0:
+        nav_buttons.append(types.InlineKeyboardButton("⬅️ Prev", callback_data="ex_page_prev"))
+    if total_pages > 1 and page < total_pages - 1:
+        nav_buttons.append(types.InlineKeyboardButton("➡️ Next", callback_data="ex_page_next"))
+    if nav_buttons:
+        markup.add(*nav_buttons)
+    markup.add(types.InlineKeyboardButton("✅ Finish workout", callback_data="finish_workout"))
+    return markup, page, total_pages
+
+
 def show_exercise_choices(message):
     user_id = message.from_user.id
     data = get_user_data(user_id)
-    exercises = data.get("pending_exercises", [])
-
-    markup = types.InlineKeyboardMarkup()
-    for ex in exercises:
-        markup.add(types.InlineKeyboardButton(text=ex["name"], callback_data=f"ex_choice_{ex['id']}"))
-    
-    markup.add(types.InlineKeyboardButton("✅ Finish workout", callback_data="finish_workout"))
-
-    sent = bot.send_message(message.chat.id, "🏋️ Choose an exercise to log a set:", reply_markup=markup)
+    if 'exercise_choice_page' not in data:
+        data['exercise_choice_page'] = 0
+        set_user_data(user_id, data)
+    markup, page, total_pages = build_exercise_choice_markup(user_id)
+    sent = bot.send_message(message.chat.id, f"🏋️ Choose an exercise (page {page+1}/{total_pages}):", reply_markup=markup)
     data['last_exercise_choice_msg_id'] = sent.message_id
     set_user_data(user_id, data)
+
+
+@bot.callback_query_handler(func=lambda call: call.data in ["ex_page_prev", "ex_page_next"])
+def paginate_exercise_choices(call):
+    user_id = call.from_user.id
+    data = get_user_data(user_id)
+    page = data.get("exercise_choice_page", 0)
+    if call.data == "ex_page_prev":
+        page -= 1
+    else:
+        page += 1
+    data['exercise_choice_page'] = page
+    set_user_data(user_id, data)
+    markup, page, total_pages = build_exercise_choice_markup(user_id)
+    last_id = data.get('last_exercise_choice_msg_id')
+    if last_id:
+        try:
+            bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=last_id,
+                text=f"🏋️ Choose an exercise (page {page+1}/{total_pages}):",
+                reply_markup=markup
+            )
+        except Exception:
+            pass
+    bot.answer_callback_query(call.id)
 
 
 @bot.callback_query_handler(func=lambda call: call.data.startswith("ex_choice_"))
@@ -753,6 +841,7 @@ def process_exercise_choice(call):
         except Exception:
             pass
 
+    bot.answer_callback_query(call.id)
     bot.send_message(call.message.chat.id, "Enter weight for the set (kg):")
     bot.register_next_step_handler(call.message, process_set_weight)
 
