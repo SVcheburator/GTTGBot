@@ -75,6 +75,13 @@ class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
 
+    def get_queryset(self):
+        queryset = Workout.objects.all().prefetch_related('muscle_groups', 'exercises__exercise__muscle_group')
+        telegram_id = self.request.query_params.get("telegram_id")
+        if telegram_id:
+            queryset = queryset.filter(user__telegram_id=telegram_id)
+        return queryset.order_by('-date', '-id')
+
     def create(self, request, *args, **kwargs):
         telegram_id = request.data.get('telegram_id')
         if not telegram_id:
@@ -88,13 +95,19 @@ class WorkoutViewSet(viewsets.ModelViewSet):
         workout_data = request.data.copy()
         workout_data['user'] = user.id
         workout_data['date'] = date.today().isoformat()
+        incoming_groups = workout_data.pop('muscle_groups', None)
         workout_data.pop('telegram_id', None)
 
         serializer = self.get_serializer(data=workout_data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
+        instance = serializer.save()
+        if incoming_groups is not None:
+            try:
+                instance.muscle_groups.set(incoming_groups)
+            except Exception:
+                pass
         headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+        return Response(self.get_serializer(instance).data, status=status.HTTP_201_CREATED, headers=headers)
 
 
 class WorkoutExerciseViewSet(viewsets.ModelViewSet):

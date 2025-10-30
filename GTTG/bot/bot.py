@@ -71,6 +71,7 @@ def get_cached_exercises():
 
 # Pagination
 EXERCISES_PAGE_SIZE = 15
+HISTORY_PAGE_SIZE = 15
 
 def paginate_list(items, page, size):
     total_pages = max(1, (len(items) + size - 1) // size)
@@ -105,7 +106,8 @@ def handle_help(message):
     "\n/createplan - create a new training plan" \
     "\n/myplans - show all training plans" \
     "\n/currentplan - show plan that was set as current" \
-    "\n/startworkout - start a new workout from plan or not"
+    "\n/startworkout - start a new workout from plan or not" \
+    "\n/history - show workout history"
     bot.send_message(message.chat.id, help_text)
 
 
@@ -892,15 +894,195 @@ def process_set_reps(message):
 @bot.callback_query_handler(func=lambda call: call.data == "finish_workout")
 def finish_workout(call):
     user_id = call.from_user.id
-    last_msg_id = get_user_data(user_id).get('last_exercise_choice_msg_id')
+    data = get_user_data(user_id)
+    last_msg_id = data.get('last_exercise_choice_msg_id')
+    current_workout_id = data.get('current_workout_id')
     if last_msg_id:
         try:
             bot.delete_message(call.message.chat.id, last_msg_id)
         except Exception:
             pass
-    pop_user_data(user_id)
-    bot.send_message(call.message.chat.id, "🏁 Workout completed! Well done 💪", reply_markup=types.ReplyKeyboardRemove())
 
+    if current_workout_id:
+        try:
+            resp = requests.get(f"{API_URL}workouts/{current_workout_id}/")
+            if resp.status_code == 200:
+                workout = resp.json()
+                bot.send_message(call.message.chat.id, "🏁 Workout completed! Well done 💪", reply_markup=types.ReplyKeyboardRemove())
+                summary = format_workout_summary(workout)
+                bot.send_message(call.message.chat.id, summary)
+        except Exception:
+            bot.send_message(call.message.chat.id, "🏁 Workout completed! Well done 💪", reply_markup=types.ReplyKeyboardRemove())
+
+    pop_user_data(user_id)
+
+
+# History and summary
+def trim_zeros(n):
+    try:
+        f = float(n)
+        if f.is_integer():
+            return str(int(f))
+        s = f"{f:.2f}".rstrip('0').rstrip('.')
+        return s
+    except Exception:
+        return str(n)
+
+
+def build_group_map():
+    groups = get_cached_muscle_groups()
+    return {g["id"]: g["name"] for g in groups}
+
+
+def get_group_names_from_workout(workout):
+    names = []
+    if isinstance(workout.get("muscle_groups"), list) and workout["muscle_groups"]:
+        for g in workout["muscle_groups"]:
+            if isinstance(g, dict) and "name" in g:
+                names.append(g["name"])
+    if not names:
+        seen = set()
+        for we in workout.get("exercises", []):
+            mg = (we.get("exercise") or {}).get("muscle_group") or {}
+            n = mg.get("name")
+            if n and n not in seen:
+                seen.add(n)
+                names.append(n)
+    return names
+
+
+def format_workout_summary(workout):
+    date_str = workout.get("date") or ""
+    is_from_plan = workout.get("is_from_plan", True)
+    group_names = get_group_names_from_workout(workout)
+    groups_part = ", ".join(group_names) if group_names else "No groups"
+    suffix = "" if is_from_plan else " (custom)"
+    header = f"{date_str} - {groups_part}{suffix}"
+
+    by_ex = {}
+    for we in workout.get("exercises", []):
+        ex = we.get("exercise") or {}
+        name = ex.get("name", "Exercise")
+        by_ex.setdefault(name, []).append(we)
+
+    lines = [header]
+    for ex_name, sets in by_ex.items():
+        lines.append(f"• {ex_name}")
+        for s in sets:
+            w = trim_zeros(s.get("weight", 0))
+            r = s.get("reps", 0)
+            lines.append(f"  - {w} kg x {r}")
+    if len(lines) == 1:
+        lines.append("No exercises logged.")
+    return "\n".join(lines)
+
+
+def get_user_workouts(telegram_id):
+    try:
+        resp = requests.get(f"{API_URL}workouts/?telegram_id={telegram_id}")
+        if resp.status_code != 200:
+            return []
+        items = resp.json()
+        items.sort(key=lambda w: (w.get("date") or "", w.get("id") or 0), reverse=True)
+        return items
+    except Exception:
+        return []
+
+
+def build_history_item_label(workout, group_map):
+    date_str = workout.get("date") or ""
+    is_from_plan = workout.get("is_from_plan", True)
+    names = get_group_names_from_workout(workout)
+    if not names:
+        ids = workout.get("muscle_groups") or []
+        if ids and isinstance(ids[0], int):
+            names = [group_map.get(i, f"ID:{i}") for i in ids]
+    groups_part = ", ".join(names) if names else "No groups"
+    suffix = "" if is_from_plan else " (custom)"
+    return f"{date_str} - {groups_part}{suffix}"
+
+
+def build_history_markup(user_id, page=0):
+    workouts = get_user_workouts(user_id)
+    group_map = build_group_map()
+    items, page, total_pages = paginate_list(workouts, page, HISTORY_PAGE_SIZE)
+
+    markup = types.InlineKeyboardMarkup()
+    for w in items:
+        label = build_history_item_label(w, group_map)
+        if len(label) > 64:
+            label = label[:61] + "..."
+        markup.add(types.InlineKeyboardButton(text=label, callback_data=f"hist_open_{w['id']}"))
+
+    nav = []
+    if total_pages > 1 and page > 0:
+        nav.append(types.InlineKeyboardButton("⬅️ Prev", callback_data="hist_prev"))
+    if total_pages > 1 and page < total_pages - 1:
+        nav.append(types.InlineKeyboardButton("➡️ Next", callback_data="hist_next"))
+    if nav:
+        markup.add(*nav)
+    return markup, page, total_pages
+
+
+@bot.message_handler(commands=['history'])
+def handle_history(message):
+    user_id = message.from_user.id
+    data = get_user_data(user_id)
+    data['history_page'] = 0
+    set_user_data(user_id, data)
+
+    markup, page, total_pages = build_history_markup(user_id, 0)
+    sent = bot.send_message(message.chat.id, f"📜 Your workouts (page {page+1}/{total_pages}):", reply_markup=markup)
+    data['last_history_msg_id'] = sent.message_id
+    set_user_data(user_id, data)
+
+
+@bot.callback_query_handler(func=lambda call: call.data in ["hist_prev", "hist_next"])
+def paginate_history(call):
+    user_id = call.from_user.id
+    data = get_user_data(user_id)
+    page = data.get('history_page', 0)
+    if call.data == "hist_prev":
+        page -= 1
+    else:
+        page += 1
+    data['history_page'] = page
+    set_user_data(user_id, data)
+
+    markup, page, total_pages = build_history_markup(user_id, page)
+    last_id = data.get('last_history_msg_id')
+    try:
+        if last_id:
+            bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=last_id,
+                text=f"📜 Your workouts (page {page+1}/{total_pages}):",
+                reply_markup=markup
+            )
+        else:
+            sent = bot.send_message(call.message.chat.id, f"📜 Your workouts (page {page+1}/{total_pages}):", reply_markup=markup)
+            data['last_history_msg_id'] = sent.message_id
+            set_user_data(user_id, data)
+    except Exception:
+        pass
+    bot.answer_callback_query(call.id)
+
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("hist_open_"))
+def handle_open_history(call):
+    user_id = call.from_user.id
+    workout_id = call.data.split("hist_open_")[1]
+    try:
+        resp = requests.get(f"{API_URL}workouts/{workout_id}/")
+        if resp.status_code != 200:
+            bot.answer_callback_query(call.id, "Failed to load workout.")
+            return
+        summary = format_workout_summary(resp.json())
+        bot.send_message(call.message.chat.id, summary)
+    except Exception:
+        bot.send_message(call.message.chat.id, "Failed to load workout.")
+    finally:
+        bot.answer_callback_query(call.id)
 
 
 if __name__ == '__main__':
