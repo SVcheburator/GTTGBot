@@ -1,0 +1,121 @@
+[
+  {
+    "model": "bot.musclegroup",
+    "pk": 1,
+    "fields": {
+      "name": "abductors"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 2,
+    "fields": {
+      "name": "abs"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 3,
+    "fields": {
+      "name": "adductors"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 4,
+    "fields": {
+      "name": "biceps"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 5,
+    "fields": {
+      "name": "calves"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 6,
+    "fields": {
+      "name": "chest"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 7,
+    "fields": {
+      "name": "forearms"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 8,
+    "fields": {
+      "name": "glutes"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 9,
+    "fields": {
+      "name": "hamstrings"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 10,
+    "fields": {
+      "name": "lats"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 11,
+    "fields": {
+      "name": "lower back"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 12,
+    "fields": {
+      "name": "middle back"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 13,
+    "fields": {
+      "name": "neck"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 14,
+    "fields": {
+      "name": "quads"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 15,
+    "fields": {
+      "name": "shoulders"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 16,
+    "fields": {
+      "name": "traps"
+    }
+  },
+  {
+    "model": "bot.musclegroup",
+    "pk": 17,
+    "fields": {
+      "name": "triceps"
+    }
+  }
+]

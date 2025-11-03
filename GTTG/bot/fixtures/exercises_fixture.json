@@ -1,0 +1,6978 @@
+[
+  {
+    "model": "bot.exercise",
+    "pk": 1,
+    "fields": {
+      "name": "3/4 Sit-Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 2,
+    "fields": {
+      "name": "90/90 Hamstring",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 3,
+    "fields": {
+      "name": "Machine Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 4,
+    "fields": {
+      "name": "Ab Roller",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 5,
+    "fields": {
+      "name": "Adductor",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 6,
+    "fields": {
+      "name": "Adductor/Groin",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 7,
+    "fields": {
+      "name": "Advanced Kettlebell Windmill",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 8,
+    "fields": {
+      "name": "Air Bike",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 9,
+    "fields": {
+      "name": "All Fours Quad Stretch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 10,
+    "fields": {
+      "name": "Alternate Hammer Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 11,
+    "fields": {
+      "name": "Alternate Heel Touchers",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 12,
+    "fields": {
+      "name": "Alternate Incline Dumbbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 13,
+    "fields": {
+      "name": "Alternate Leg Diagonal Bound",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 14,
+    "fields": {
+      "name": "Alternating Cable Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 15,
+    "fields": {
+      "name": "Alternating Deltoid Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 16,
+    "fields": {
+      "name": "Alternating Floor Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 17,
+    "fields": {
+      "name": "Alternating Hang Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 18,
+    "fields": {
+      "name": "Alternating Kettlebell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 19,
+    "fields": {
+      "name": "Alternating Kettlebell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 20,
+    "fields": {
+      "name": "Alternating Renegade Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 21,
+    "fields": {
+      "name": "Ankle Circles",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 22,
+    "fields": {
+      "name": "Ankle On The Knee",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 23,
+    "fields": {
+      "name": "Anterior Tibialis-SMR",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 24,
+    "fields": {
+      "name": "Anti-Gravity Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 25,
+    "fields": {
+      "name": "Arm Circles",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 26,
+    "fields": {
+      "name": "Arnold Dumbbell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 27,
+    "fields": {
+      "name": "Around The Worlds",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 28,
+    "fields": {
+      "name": "Atlas Stone Trainer",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 29,
+    "fields": {
+      "name": "Atlas Stones",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 30,
+    "fields": {
+      "name": "Axle Deadlift",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 31,
+    "fields": {
+      "name": "Back Flyes - With Bands",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 32,
+    "fields": {
+      "name": "Backward Drag",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 33,
+    "fields": {
+      "name": "Backward Medicine Ball Throw",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 34,
+    "fields": {
+      "name": "Balance Board",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 35,
+    "fields": {
+      "name": "Ball Leg Curl",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 36,
+    "fields": {
+      "name": "Band Assisted Pull-Up",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 37,
+    "fields": {
+      "name": "Band Good Morning",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 38,
+    "fields": {
+      "name": "Band Good Morning (Pull Through)",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 39,
+    "fields": {
+      "name": "Band Hip Adductions",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 40,
+    "fields": {
+      "name": "Band Pull Apart",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 41,
+    "fields": {
+      "name": "Band Skullcrusher",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 42,
+    "fields": {
+      "name": "Dumbbell Skullcrusher",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 43,
+    "fields": {
+      "name": "Barbell Ab Rollout",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 44,
+    "fields": {
+      "name": "Barbell Ab Rollout - On Knees",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 45,
+    "fields": {
+      "name": "Barbell Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 46,
+    "fields": {
+      "name": "Barbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 47,
+    "fields": {
+      "name": "Barbell Curls Lying Against An Incline",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 48,
+    "fields": {
+      "name": "Barbell Deadlift",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 49,
+    "fields": {
+      "name": "Barbell Full Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 50,
+    "fields": {
+      "name": "Barbell Glute Bridge",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 51,
+    "fields": {
+      "name": "Barbell Guillotine Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 52,
+    "fields": {
+      "name": "Barbell Hack Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 53,
+    "fields": {
+      "name": "Barbell Hip Thrust",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 54,
+    "fields": {
+      "name": "Barbell Incline Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 55,
+    "fields": {
+      "name": "Barbell Incline Shoulder Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 56,
+    "fields": {
+      "name": "Barbell Lunge",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 57,
+    "fields": {
+      "name": "Barbell Rear Delt Row",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 58,
+    "fields": {
+      "name": "Barbell Rollout from Bench",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 59,
+    "fields": {
+      "name": "Barbell Seated Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 60,
+    "fields": {
+      "name": "Barbell Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 61,
+    "fields": {
+      "name": "Barbell Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 62,
+    "fields": {
+      "name": "Barbell Shrug Behind The Back",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 63,
+    "fields": {
+      "name": "Barbell Side Bend",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 64,
+    "fields": {
+      "name": "Barbell Side Split Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 65,
+    "fields": {
+      "name": "Barbell Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 66,
+    "fields": {
+      "name": "Barbell Squat To A Bench",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 67,
+    "fields": {
+      "name": "Barbell Step Ups",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 68,
+    "fields": {
+      "name": "Barbell Walking Lunge",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 69,
+    "fields": {
+      "name": "Battling Ropes",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 70,
+    "fields": {
+      "name": "Bear Crawl Sled Drags",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 71,
+    "fields": {
+      "name": "Behind Head Chest Stretch",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 72,
+    "fields": {
+      "name": "Bench Dips",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 73,
+    "fields": {
+      "name": "Bench Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 74,
+    "fields": {
+      "name": "Band Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 75,
+    "fields": {
+      "name": "Barbell Bench Press with Chains",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 76,
+    "fields": {
+      "name": "Bench Sprint",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 77,
+    "fields": {
+      "name": "Bent-Arm Barbell Pullover",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 78,
+    "fields": {
+      "name": "Bent-Arm Dumbbell Pullover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 79,
+    "fields": {
+      "name": "Bent-Knee Hip Raise",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 80,
+    "fields": {
+      "name": "Bent Over Barbell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 81,
+    "fields": {
+      "name": "Bent Over Dumbbell Rear Delt Raise With Head On Bench",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 82,
+    "fields": {
+      "name": "Bent Over Low-Pulley Side Lateral",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 83,
+    "fields": {
+      "name": "Bent Over One-Arm Long Bar Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 84,
+    "fields": {
+      "name": "Bent Over Two-Arm Long Bar Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 85,
+    "fields": {
+      "name": "Bent Over Two-Dumbbell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 86,
+    "fields": {
+      "name": "Bent Over Two-Dumbbell Row With Palms In",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 87,
+    "fields": {
+      "name": "Bent Press",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 88,
+    "fields": {
+      "name": "Bicycling",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 89,
+    "fields": {
+      "name": "Bicycling, Stationary",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 90,
+    "fields": {
+      "name": "Board Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 91,
+    "fields": {
+      "name": "Body-Up",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 92,
+    "fields": {
+      "name": "Body Tricep Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 93,
+    "fields": {
+      "name": "Bodyweight Flyes",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 94,
+    "fields": {
+      "name": "Bodyweight Mid Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 95,
+    "fields": {
+      "name": "Bodyweight Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 96,
+    "fields": {
+      "name": "Bodyweight Walking Lunge",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 97,
+    "fields": {
+      "name": "Bosu Ball Cable Crunch With Side Bends",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 98,
+    "fields": {
+      "name": "Bottoms-Up Clean From The Hang Position",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 99,
+    "fields": {
+      "name": "Bottoms Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 100,
+    "fields": {
+      "name": "Box Jump (Multiple Response)",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 101,
+    "fields": {
+      "name": "Box Skip",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 102,
+    "fields": {
+      "name": "Box Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 103,
+    "fields": {
+      "name": "Box Squat with Bands",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 104,
+    "fields": {
+      "name": "Box Squat with Chains",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 105,
+    "fields": {
+      "name": "Brachialis-SMR",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 106,
+    "fields": {
+      "name": "Bradford/Rocky Presses",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 107,
+    "fields": {
+      "name": "Butt-Ups",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 108,
+    "fields": {
+      "name": "Butt Lift (Bridge)",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 109,
+    "fields": {
+      "name": "Machine Chest Fly",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 110,
+    "fields": {
+      "name": "Cable Chest Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 111,
+    "fields": {
+      "name": "Cable Crossover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 112,
+    "fields": {
+      "name": "Cable Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 113,
+    "fields": {
+      "name": "Cable Deadlifts",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 114,
+    "fields": {
+      "name": "Cable Hammer Curls (Rope Attachment)",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 115,
+    "fields": {
+      "name": "Cable Hip Adduction",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 116,
+    "fields": {
+      "name": "Cable Incline Pushdown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 117,
+    "fields": {
+      "name": "Cable Incline Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 118,
+    "fields": {
+      "name": "Cable Internal Rotation",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 119,
+    "fields": {
+      "name": "Cable Iron Cross",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 120,
+    "fields": {
+      "name": "Cable Judo Flip",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 121,
+    "fields": {
+      "name": "Cable Lying Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 122,
+    "fields": {
+      "name": "Cable One Arm Tricep Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 123,
+    "fields": {
+      "name": "Cable Preacher Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 124,
+    "fields": {
+      "name": "Cable Rear Delt Fly",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 125,
+    "fields": {
+      "name": "Cable Reverse Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 126,
+    "fields": {
+      "name": "Cable Rope Overhead Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 127,
+    "fields": {
+      "name": "Cable Rope Rear-Delt Rows",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 128,
+    "fields": {
+      "name": "Cable Russian Twists",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 129,
+    "fields": {
+      "name": "Cable Seated Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 130,
+    "fields": {
+      "name": "Cable Seated Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 131,
+    "fields": {
+      "name": "Cable Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 132,
+    "fields": {
+      "name": "Cable Shrugs",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 133,
+    "fields": {
+      "name": "Cable Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 134,
+    "fields": {
+      "name": "Calf-Machine Shoulder Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 135,
+    "fields": {
+      "name": "Calf Press",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 136,
+    "fields": {
+      "name": "Calf Press On The Leg Press Machine",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 137,
+    "fields": {
+      "name": "Calf Raise On A Dumbbell",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 138,
+    "fields": {
+      "name": "Calf Raises - With Bands",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 139,
+    "fields": {
+      "name": "Calf Stretch Elbows Against Wall",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 140,
+    "fields": {
+      "name": "Calf Stretch Hands Against Wall",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 141,
+    "fields": {
+      "name": "Calves-SMR",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 142,
+    "fields": {
+      "name": "Car Deadlift",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 143,
+    "fields": {
+      "name": "Car Drivers",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 144,
+    "fields": {
+      "name": "Carioca Quick Step",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 145,
+    "fields": {
+      "name": "Cat Stretch",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 146,
+    "fields": {
+      "name": "Catch and Overhead Throw",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 147,
+    "fields": {
+      "name": "Chain Handle Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 148,
+    "fields": {
+      "name": "Chain Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 149,
+    "fields": {
+      "name": "Chair Leg Extended Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 150,
+    "fields": {
+      "name": "Chair Lower Back Stretch",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 151,
+    "fields": {
+      "name": "Chair Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 152,
+    "fields": {
+      "name": "Chair Upper Body Stretch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 153,
+    "fields": {
+      "name": "Chest And Front Of Shoulder Stretch",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 154,
+    "fields": {
+      "name": "Chest Push (multiple response)",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 155,
+    "fields": {
+      "name": "Chest Push (single response)",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 156,
+    "fields": {
+      "name": "Chest Push from 3 point stance",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 157,
+    "fields": {
+      "name": "Chest Push with Run Release",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 158,
+    "fields": {
+      "name": "Chest Stretch on Stability Ball",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 159,
+    "fields": {
+      "name": "Child's Pose",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 160,
+    "fields": {
+      "name": "Chin-Up",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 161,
+    "fields": {
+      "name": "Chin To Chest Stretch",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 162,
+    "fields": {
+      "name": "Circus Bell",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 163,
+    "fields": {
+      "name": "Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 164,
+    "fields": {
+      "name": "Clean Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 165,
+    "fields": {
+      "name": "Clean Pull",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 166,
+    "fields": {
+      "name": "Clean Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 167,
+    "fields": {
+      "name": "Clean and Jerk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 168,
+    "fields": {
+      "name": "Clean and Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 169,
+    "fields": {
+      "name": "Clean from Blocks",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 170,
+    "fields": {
+      "name": "Clock Push-Up",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 171,
+    "fields": {
+      "name": "Close-Grip Barbell Bench Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 172,
+    "fields": {
+      "name": "Close-Grip Dumbbell Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 173,
+    "fields": {
+      "name": "Close-Grip EZ-Bar Curl with Band",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 174,
+    "fields": {
+      "name": "Close-Grip EZ-Bar Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 175,
+    "fields": {
+      "name": "Close-Grip EZ Bar Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 176,
+    "fields": {
+      "name": "Close-Grip Front Lat Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 177,
+    "fields": {
+      "name": "Close-Grip Push-Up off of a Dumbbell",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 178,
+    "fields": {
+      "name": "Close-Grip Standing Barbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 179,
+    "fields": {
+      "name": "Cocoons",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 180,
+    "fields": {
+      "name": "Conan's Wheel",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 181,
+    "fields": {
+      "name": "Concentration Curls",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 182,
+    "fields": {
+      "name": "Cross-Body Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 183,
+    "fields": {
+      "name": "Cross Body Hammer Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 184,
+    "fields": {
+      "name": "Cross Over - With Bands",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 185,
+    "fields": {
+      "name": "Crossover Reverse Lunge",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 186,
+    "fields": {
+      "name": "Crucifix",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 187,
+    "fields": {
+      "name": "Crunch - Hands Overhead",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 188,
+    "fields": {
+      "name": "Crunch - Legs On Exercise Ball",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 189,
+    "fields": {
+      "name": "Crunches",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 190,
+    "fields": {
+      "name": "Cuban Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 191,
+    "fields": {
+      "name": "Dancer's Stretch",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 192,
+    "fields": {
+      "name": "Dead Bug",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 193,
+    "fields": {
+      "name": "Deadlift with Bands",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 194,
+    "fields": {
+      "name": "Deadlift with Chains",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 195,
+    "fields": {
+      "name": "Barbell Decline Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 196,
+    "fields": {
+      "name": "Decline Close-Grip Bench To Skull Crusher",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 197,
+    "fields": {
+      "name": "Decline Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 198,
+    "fields": {
+      "name": "Dumbbell Decline Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 199,
+    "fields": {
+      "name": "Decline Dumbbell Flyes",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 200,
+    "fields": {
+      "name": "Decline Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 201,
+    "fields": {
+      "name": "Decline EZ Bar Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 202,
+    "fields": {
+      "name": "Decline Oblique Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 203,
+    "fields": {
+      "name": "Decline Push-Up",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 204,
+    "fields": {
+      "name": "Decline Reverse Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 205,
+    "fields": {
+      "name": "Decline Smith Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 206,
+    "fields": {
+      "name": "Deficit Deadlift",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 207,
+    "fields": {
+      "name": "Depth Jump Leap",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 208,
+    "fields": {
+      "name": "Machine Dips",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 209,
+    "fields": {
+      "name": "Dips (Chest Focus)",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 210,
+    "fields": {
+      "name": "Dips (Triceps Focus)",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 211,
+    "fields": {
+      "name": "Donkey Calf Raises",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 212,
+    "fields": {
+      "name": "Double Kettlebell Alternating Hang Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 213,
+    "fields": {
+      "name": "Double Kettlebell Jerk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 214,
+    "fields": {
+      "name": "Double Kettlebell Push Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 215,
+    "fields": {
+      "name": "Double Kettlebell Snatch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 216,
+    "fields": {
+      "name": "Double Kettlebell Windmill",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 217,
+    "fields": {
+      "name": "Double Leg Butt Kick",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 218,
+    "fields": {
+      "name": "Downward Facing Balance",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 219,
+    "fields": {
+      "name": "Drag Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 220,
+    "fields": {
+      "name": "Drop Push",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 221,
+    "fields": {
+      "name": "Dumbbell Alternate Bicep Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 222,
+    "fields": {
+      "name": "Dumbbell Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 223,
+    "fields": {
+      "name": "Dumbbell Bench Press with Neutral Grip",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 224,
+    "fields": {
+      "name": "Dumbbell Bicep Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 225,
+    "fields": {
+      "name": "Dumbbell Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 226,
+    "fields": {
+      "name": "Dumbbell Floor Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 227,
+    "fields": {
+      "name": "Dumbbell Flyes",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 228,
+    "fields": {
+      "name": "Dumbbell Incline Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 229,
+    "fields": {
+      "name": "Dumbbell Incline Shoulder Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 230,
+    "fields": {
+      "name": "Dumbbell Lunges",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 231,
+    "fields": {
+      "name": "Dumbbell Lying One-Arm Rear Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 232,
+    "fields": {
+      "name": "Dumbbell Lying Pronation",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 233,
+    "fields": {
+      "name": "Dumbbell Lying Rear Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 234,
+    "fields": {
+      "name": "Dumbbell Lying Supination",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 235,
+    "fields": {
+      "name": "Dumbbell One-Arm Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 236,
+    "fields": {
+      "name": "Dumbbell One-Arm Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 237,
+    "fields": {
+      "name": "Dumbbell One-Arm Upright Row",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 238,
+    "fields": {
+      "name": "Dumbbell Prone Incline Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 239,
+    "fields": {
+      "name": "Dumbbell Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 240,
+    "fields": {
+      "name": "Dumbbell Rear Lunge",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 241,
+    "fields": {
+      "name": "Dumbbell Scaption",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 242,
+    "fields": {
+      "name": "Dumbbell Seated Box Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 243,
+    "fields": {
+      "name": "Dumbbell Seated One-Leg Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 244,
+    "fields": {
+      "name": "Dumbbell Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 245,
+    "fields": {
+      "name": "Dumbbell Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 246,
+    "fields": {
+      "name": "Dumbbell Side Bend",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 247,
+    "fields": {
+      "name": "Dumbbell Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 248,
+    "fields": {
+      "name": "Dumbbell Squat To A Bench",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 249,
+    "fields": {
+      "name": "Dumbbell Step Ups",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 250,
+    "fields": {
+      "name": "Dumbbell Tricep Extension - Pronated Grip",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 251,
+    "fields": {
+      "name": "Dynamic Back Stretch",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 252,
+    "fields": {
+      "name": "Dynamic Chest Stretch",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 253,
+    "fields": {
+      "name": "EZ-Bar Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 254,
+    "fields": {
+      "name": "EZ-Bar Skullcrusher",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 255,
+    "fields": {
+      "name": "Elbow Circles",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 256,
+    "fields": {
+      "name": "Elbow to Knee",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 257,
+    "fields": {
+      "name": "Elbows Back",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 258,
+    "fields": {
+      "name": "Elevated Back Lunge",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 259,
+    "fields": {
+      "name": "Elevated Cable Rows",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 260,
+    "fields": {
+      "name": "Elliptical Trainer",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 261,
+    "fields": {
+      "name": "Exercise Ball Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 262,
+    "fields": {
+      "name": "Exercise Ball Pull-In",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 263,
+    "fields": {
+      "name": "Extended Range One-Arm Kettlebell Floor Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 264,
+    "fields": {
+      "name": "External Rotation",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 265,
+    "fields": {
+      "name": "External Rotation with Band",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 266,
+    "fields": {
+      "name": "External Rotation with Cable",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 267,
+    "fields": {
+      "name": "Face Pull",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 268,
+    "fields": {
+      "name": "Farmer's Walk",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 269,
+    "fields": {
+      "name": "Fast Skipping",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 270,
+    "fields": {
+      "name": "Finger Curls",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 271,
+    "fields": {
+      "name": "Flat Bench Cable Flyes",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 272,
+    "fields": {
+      "name": "Flat Bench Leg Pull-In",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 273,
+    "fields": {
+      "name": "Flat Bench Lying Leg Raise",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 274,
+    "fields": {
+      "name": "Flexor Incline Dumbbell Curls",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 275,
+    "fields": {
+      "name": "Floor Glute-Ham Raise",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 276,
+    "fields": {
+      "name": "Floor Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 277,
+    "fields": {
+      "name": "Floor Press with Chains",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 278,
+    "fields": {
+      "name": "Flutter Kicks",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 279,
+    "fields": {
+      "name": "Foot-SMR",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 280,
+    "fields": {
+      "name": "Forward Drag with Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 281,
+    "fields": {
+      "name": "Frankenstein Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 282,
+    "fields": {
+      "name": "Freehand Jump Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 283,
+    "fields": {
+      "name": "Frog Hops",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 284,
+    "fields": {
+      "name": "Frog Sit-Ups",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 285,
+    "fields": {
+      "name": "Front Barbell Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 286,
+    "fields": {
+      "name": "Front Barbell Squat To A Bench",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 287,
+    "fields": {
+      "name": "Front Box Jump",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 288,
+    "fields": {
+      "name": "Front Cable Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 289,
+    "fields": {
+      "name": "Front Cone Hops (or hurdle hops)",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 290,
+    "fields": {
+      "name": "Front Dumbbell Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 291,
+    "fields": {
+      "name": "Front Incline Dumbbell Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 292,
+    "fields": {
+      "name": "Front Leg Raises",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 293,
+    "fields": {
+      "name": "Front Plate Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 294,
+    "fields": {
+      "name": "Front Raise And Pullover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 295,
+    "fields": {
+      "name": "Front Squat (Clean Grip)",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 296,
+    "fields": {
+      "name": "Front Squats With Two Kettlebells",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 297,
+    "fields": {
+      "name": "Front Two-Dumbbell Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 298,
+    "fields": {
+      "name": "Full Range-Of-Motion Lat Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 299,
+    "fields": {
+      "name": "Gironda Sternum Chins",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 300,
+    "fields": {
+      "name": "Glute Ham Raise",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 301,
+    "fields": {
+      "name": "Glute Kickback",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 302,
+    "fields": {
+      "name": "Goblet Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 303,
+    "fields": {
+      "name": "Good Morning",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 304,
+    "fields": {
+      "name": "Good Morning off Pins",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 305,
+    "fields": {
+      "name": "Gorilla Chin/Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 306,
+    "fields": {
+      "name": "Groin and Back Stretch",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 307,
+    "fields": {
+      "name": "Groiners",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 308,
+    "fields": {
+      "name": "Hack Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 309,
+    "fields": {
+      "name": "Hammer Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 310,
+    "fields": {
+      "name": "Hammer Grip Incline DB Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 311,
+    "fields": {
+      "name": "Hamstring-SMR",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 312,
+    "fields": {
+      "name": "Hamstring Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 313,
+    "fields": {
+      "name": "Handstand Push-Ups",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 314,
+    "fields": {
+      "name": "Hang Clean",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 315,
+    "fields": {
+      "name": "Hang Clean - Below the Knees",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 316,
+    "fields": {
+      "name": "Hang Snatch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 317,
+    "fields": {
+      "name": "Hang Snatch - Below Knees",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 318,
+    "fields": {
+      "name": "Hanging Bar Good Morning",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 319,
+    "fields": {
+      "name": "Hanging Leg Raise",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 320,
+    "fields": {
+      "name": "Hanging Pike",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 321,
+    "fields": {
+      "name": "Heaving Snatch Balance",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 322,
+    "fields": {
+      "name": "Heavy Bag Thrust",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 323,
+    "fields": {
+      "name": "High Cable Curls",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 324,
+    "fields": {
+      "name": "Hip Circles (prone)",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 325,
+    "fields": {
+      "name": "Hip Extension with Bands",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 326,
+    "fields": {
+      "name": "Hip Flexion with Band",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 327,
+    "fields": {
+      "name": "Hip Lift with Band",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 328,
+    "fields": {
+      "name": "Hug A Ball",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 329,
+    "fields": {
+      "name": "Hug Knees To Chest",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 330,
+    "fields": {
+      "name": "Hurdle Hops",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 331,
+    "fields": {
+      "name": "Hyperextensions (Back Extensions)",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 332,
+    "fields": {
+      "name": "Hyperextensions With No Hyperextension Bench",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 333,
+    "fields": {
+      "name": "IT Band and Glute Stretch",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 334,
+    "fields": {
+      "name": "Iliotibial Tract-SMR",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 335,
+    "fields": {
+      "name": "Inchworm",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 336,
+    "fields": {
+      "name": "Incline Barbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 337,
+    "fields": {
+      "name": "Incline Bench Pull",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 338,
+    "fields": {
+      "name": "Incline Cable Chest Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 339,
+    "fields": {
+      "name": "Incline Cable Flye",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 340,
+    "fields": {
+      "name": "Incline Dumbbell Bench With Palms Facing In",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 341,
+    "fields": {
+      "name": "Incline Dumbbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 342,
+    "fields": {
+      "name": "Incline Dumbbell Flyes",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 343,
+    "fields": {
+      "name": "Incline Dumbbell Flyes - With A Twist",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 344,
+    "fields": {
+      "name": "Incline Dumbbell Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 345,
+    "fields": {
+      "name": "Incline Hammer Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 346,
+    "fields": {
+      "name": "Incline Inner Biceps Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 347,
+    "fields": {
+      "name": "Incline Push-Up",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 348,
+    "fields": {
+      "name": "Incline Push-Up Close-Grip",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 349,
+    "fields": {
+      "name": "Incline Push-Up Depth Jump",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 350,
+    "fields": {
+      "name": "Incline Push-Up Medium",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 351,
+    "fields": {
+      "name": "Incline Push-Up Reverse Grip",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 352,
+    "fields": {
+      "name": "Incline Push-Up Wide",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 353,
+    "fields": {
+      "name": "Intermediate Groin Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 354,
+    "fields": {
+      "name": "Intermediate Hip Flexor and Quad Stretch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 355,
+    "fields": {
+      "name": "Internal Rotation with Band",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 356,
+    "fields": {
+      "name": "Inverted Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 357,
+    "fields": {
+      "name": "Inverted Row with Straps",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 358,
+    "fields": {
+      "name": "Iron Cross",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 359,
+    "fields": {
+      "name": "Iron Crosses (stretch)",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 360,
+    "fields": {
+      "name": "Isometric Chest Squeezes",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 361,
+    "fields": {
+      "name": "Isometric Neck Exercise - Front And Back",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 362,
+    "fields": {
+      "name": "Isometric Neck Exercise - Sides",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 363,
+    "fields": {
+      "name": "Isometric Wipers",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 364,
+    "fields": {
+      "name": "JM Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 365,
+    "fields": {
+      "name": "Jackknife Sit-Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 366,
+    "fields": {
+      "name": "Janda Sit-Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 367,
+    "fields": {
+      "name": "Jefferson Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 368,
+    "fields": {
+      "name": "Jerk Balance",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 369,
+    "fields": {
+      "name": "Jerk Dip Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 370,
+    "fields": {
+      "name": "Jogging, Treadmill",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 371,
+    "fields": {
+      "name": "Keg Load",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 372,
+    "fields": {
+      "name": "Kettlebell Arnold Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 373,
+    "fields": {
+      "name": "Kettlebell Dead Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 374,
+    "fields": {
+      "name": "Kettlebell Figure 8",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 375,
+    "fields": {
+      "name": "Kettlebell Hang Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 376,
+    "fields": {
+      "name": "Kettlebell One-Legged Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 377,
+    "fields": {
+      "name": "Kettlebell Pass Between The Legs",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 378,
+    "fields": {
+      "name": "Kettlebell Pirate Ships",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 379,
+    "fields": {
+      "name": "Kettlebell Pistol Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 380,
+    "fields": {
+      "name": "Kettlebell Seated Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 381,
+    "fields": {
+      "name": "Kettlebell Seesaw Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 382,
+    "fields": {
+      "name": "Kettlebell Sumo High Pull",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 383,
+    "fields": {
+      "name": "Kettlebell Thruster",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 384,
+    "fields": {
+      "name": "Kettlebell Turkish Get-Up (Lunge style)",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 385,
+    "fields": {
+      "name": "Kettlebell Turkish Get-Up (Squat style)",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 386,
+    "fields": {
+      "name": "Kettlebell Windmill",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 387,
+    "fields": {
+      "name": "Kipping Muscle Up",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 388,
+    "fields": {
+      "name": "Knee Across The Body",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 389,
+    "fields": {
+      "name": "Knee Circles",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 390,
+    "fields": {
+      "name": "Knee/Hip Raise On Parallel Bars",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 391,
+    "fields": {
+      "name": "Knee Tuck Jump",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 392,
+    "fields": {
+      "name": "Kneeling Arm Drill",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 393,
+    "fields": {
+      "name": "Kneeling Cable Crunch With Alternating Oblique Twists",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 394,
+    "fields": {
+      "name": "Kneeling Cable Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 395,
+    "fields": {
+      "name": "Kneeling Forearm Stretch",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 396,
+    "fields": {
+      "name": "Kneeling High Pulley Row",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 397,
+    "fields": {
+      "name": "Kneeling Hip Flexor",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 398,
+    "fields": {
+      "name": "Kneeling Jump Squat",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 399,
+    "fields": {
+      "name": "Kneeling Single-Arm High Pulley Row",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 400,
+    "fields": {
+      "name": "Kneeling Squat",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 401,
+    "fields": {
+      "name": "Landmine 180's",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 402,
+    "fields": {
+      "name": "Landmine Linear Jammer",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 403,
+    "fields": {
+      "name": "Lateral Bound",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 404,
+    "fields": {
+      "name": "Lateral Box Jump",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 405,
+    "fields": {
+      "name": "Lateral Cone Hops",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 406,
+    "fields": {
+      "name": "Lateral Raise - With Bands",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 407,
+    "fields": {
+      "name": "Latissimus Dorsi-SMR",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 408,
+    "fields": {
+      "name": "Leg-Over Floor Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 409,
+    "fields": {
+      "name": "Leg-Up Hamstring Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 410,
+    "fields": {
+      "name": "Leg Extensions",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 411,
+    "fields": {
+      "name": "Leg Lift",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 412,
+    "fields": {
+      "name": "Leg Press",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 413,
+    "fields": {
+      "name": "Leg Pull-In",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 414,
+    "fields": {
+      "name": "Leverage Chest Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 415,
+    "fields": {
+      "name": "Leverage Deadlift",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 416,
+    "fields": {
+      "name": "Leverage Decline Chest Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 417,
+    "fields": {
+      "name": "Leverage High Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 418,
+    "fields": {
+      "name": "Leverage Incline Chest Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 419,
+    "fields": {
+      "name": "Leverage Iso Row",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 420,
+    "fields": {
+      "name": "Leverage Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 421,
+    "fields": {
+      "name": "Leverage Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 422,
+    "fields": {
+      "name": "Linear 3-Part Start Technique",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 423,
+    "fields": {
+      "name": "Linear Acceleration Wall Drill",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 424,
+    "fields": {
+      "name": "Linear Depth Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 425,
+    "fields": {
+      "name": "Log Lift",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 426,
+    "fields": {
+      "name": "London Bridges",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 427,
+    "fields": {
+      "name": "Looking At Ceiling",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 428,
+    "fields": {
+      "name": "Low Cable Crossover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 429,
+    "fields": {
+      "name": "Low Cable Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 430,
+    "fields": {
+      "name": "Low Pulley Row To Neck",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 431,
+    "fields": {
+      "name": "Lower Back-SMR",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 432,
+    "fields": {
+      "name": "Lower Back Curl",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 433,
+    "fields": {
+      "name": "Lunge Pass Through",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 434,
+    "fields": {
+      "name": "Lunge Sprint",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 435,
+    "fields": {
+      "name": "Lying Bent Leg Groin",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 436,
+    "fields": {
+      "name": "Lying Cable Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 437,
+    "fields": {
+      "name": "Lying Cambered Barbell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 438,
+    "fields": {
+      "name": "Lying Close-Grip Bar Curl On High Pulley",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 439,
+    "fields": {
+      "name": "Lying Close-Grip Barbell Triceps Extension Behind The Head",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 440,
+    "fields": {
+      "name": "Lying Close-Grip Barbell Triceps Press To Chin",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 441,
+    "fields": {
+      "name": "Lying Crossover",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 442,
+    "fields": {
+      "name": "Lying Dumbbell Tricep Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 443,
+    "fields": {
+      "name": "Lying Face Down Plate Neck Resistance",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 444,
+    "fields": {
+      "name": "Lying Face Up Plate Neck Resistance",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 445,
+    "fields": {
+      "name": "Lying Glute",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 446,
+    "fields": {
+      "name": "Lying Hamstring",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 447,
+    "fields": {
+      "name": "Lying High Bench Barbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 448,
+    "fields": {
+      "name": "Lying Leg Curls",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 449,
+    "fields": {
+      "name": "Lying Machine Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 450,
+    "fields": {
+      "name": "Lying One-Arm Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 451,
+    "fields": {
+      "name": "Lying Prone Quadriceps",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 452,
+    "fields": {
+      "name": "Lying Rear Delt Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 453,
+    "fields": {
+      "name": "Lying Supine Dumbbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 454,
+    "fields": {
+      "name": "Lying T-Bar Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 455,
+    "fields": {
+      "name": "Lying Triceps Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 456,
+    "fields": {
+      "name": "Machine Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 457,
+    "fields": {
+      "name": "Machine Bicep Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 458,
+    "fields": {
+      "name": "Machine Preacher Curls",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 459,
+    "fields": {
+      "name": "Machine Shoulder (Military) Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 460,
+    "fields": {
+      "name": "Machine Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 461,
+    "fields": {
+      "name": "Medicine Ball Chest Pass",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 462,
+    "fields": {
+      "name": "Medicine Ball Full Twist",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 463,
+    "fields": {
+      "name": "Medicine Ball Scoop Throw",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 464,
+    "fields": {
+      "name": "Middle Back Shrug",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 465,
+    "fields": {
+      "name": "Middle Back Stretch",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 466,
+    "fields": {
+      "name": "Mixed Grip Chin",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 467,
+    "fields": {
+      "name": "Monster Walk",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 468,
+    "fields": {
+      "name": "Mountain Climbers",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 469,
+    "fields": {
+      "name": "Moving Claw Series",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 470,
+    "fields": {
+      "name": "Muscle Snatch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 471,
+    "fields": {
+      "name": "Muscle Up",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 472,
+    "fields": {
+      "name": "Narrow Stance Hack Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 473,
+    "fields": {
+      "name": "Narrow Stance Leg Press",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 474,
+    "fields": {
+      "name": "Narrow Stance Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 475,
+    "fields": {
+      "name": "Natural Glute Ham Raise",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 476,
+    "fields": {
+      "name": "Neck-SMR",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 477,
+    "fields": {
+      "name": "Neck Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 478,
+    "fields": {
+      "name": "Oblique Crunches",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 479,
+    "fields": {
+      "name": "Oblique Crunches - On The Floor",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 480,
+    "fields": {
+      "name": "Olympic Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 481,
+    "fields": {
+      "name": "On-Your-Back Quad Stretch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 482,
+    "fields": {
+      "name": "On Your Side Quad Stretch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 483,
+    "fields": {
+      "name": "One-Arm Dumbbell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 484,
+    "fields": {
+      "name": "One-Arm Flat Bench Dumbbell Flye",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 485,
+    "fields": {
+      "name": "One-Arm High-Pulley Cable Side Bends",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 486,
+    "fields": {
+      "name": "One-Arm Incline Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 487,
+    "fields": {
+      "name": "One-Arm Kettlebell Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 488,
+    "fields": {
+      "name": "One-Arm Kettlebell Clean and Jerk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 489,
+    "fields": {
+      "name": "One-Arm Kettlebell Floor Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 490,
+    "fields": {
+      "name": "One-Arm Kettlebell Jerk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 491,
+    "fields": {
+      "name": "One-Arm Kettlebell Military Press To The Side",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 492,
+    "fields": {
+      "name": "One-Arm Kettlebell Para Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 493,
+    "fields": {
+      "name": "One-Arm Kettlebell Push Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 494,
+    "fields": {
+      "name": "One-Arm Kettlebell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 495,
+    "fields": {
+      "name": "One-Arm Kettlebell Snatch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 496,
+    "fields": {
+      "name": "One-Arm Kettlebell Split Jerk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 497,
+    "fields": {
+      "name": "One-Arm Kettlebell Split Snatch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 498,
+    "fields": {
+      "name": "One-Arm Kettlebell Swings",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 499,
+    "fields": {
+      "name": "One-Arm Long Bar Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 500,
+    "fields": {
+      "name": "One-Arm Medicine Ball Slam",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 501,
+    "fields": {
+      "name": "One-Arm Open Palm Kettlebell Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 502,
+    "fields": {
+      "name": "One-Arm Overhead Kettlebell Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 503,
+    "fields": {
+      "name": "One-Arm Side Deadlift",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 504,
+    "fields": {
+      "name": "One-Arm Side Laterals",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 505,
+    "fields": {
+      "name": "One-Legged Cable Kickback",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 506,
+    "fields": {
+      "name": "One Arm Against Wall",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 507,
+    "fields": {
+      "name": "One Arm Chin-Up",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 508,
+    "fields": {
+      "name": "One Arm Dumbbell Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 509,
+    "fields": {
+      "name": "One Arm Dumbbell Preacher Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 510,
+    "fields": {
+      "name": "One Arm Floor Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 511,
+    "fields": {
+      "name": "One Arm Lat Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 512,
+    "fields": {
+      "name": "One Arm Pronated Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 513,
+    "fields": {
+      "name": "One Arm Supinated Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 514,
+    "fields": {
+      "name": "One Half Locust",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 515,
+    "fields": {
+      "name": "One Handed Hang",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 516,
+    "fields": {
+      "name": "One Knee To Chest",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 517,
+    "fields": {
+      "name": "One Leg Barbell Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 518,
+    "fields": {
+      "name": "Open Palm Kettlebell Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 519,
+    "fields": {
+      "name": "Otis-Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 520,
+    "fields": {
+      "name": "Overhead Cable Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 521,
+    "fields": {
+      "name": "Overhead Lat",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 522,
+    "fields": {
+      "name": "Overhead Slam",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 523,
+    "fields": {
+      "name": "Overhead Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 524,
+    "fields": {
+      "name": "Overhead Stretch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 525,
+    "fields": {
+      "name": "Overhead Triceps",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 526,
+    "fields": {
+      "name": "Pallof Press",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 527,
+    "fields": {
+      "name": "Pallof Press With Rotation",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 528,
+    "fields": {
+      "name": "Palms-Down Dumbbell Wrist Curl Over A Bench",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 529,
+    "fields": {
+      "name": "Palms-Down Wrist Curl Over A Bench",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 530,
+    "fields": {
+      "name": "Palms-Up Barbell Wrist Curl Over A Bench",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 531,
+    "fields": {
+      "name": "Palms-Up Dumbbell Wrist Curl Over A Bench",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 532,
+    "fields": {
+      "name": "Pelvic Tilt Into Bridge",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 533,
+    "fields": {
+      "name": "Peroneals-SMR",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 534,
+    "fields": {
+      "name": "Peroneals Stretch",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 535,
+    "fields": {
+      "name": "Physioball Hip Bridge",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 536,
+    "fields": {
+      "name": "Pin Presses",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 537,
+    "fields": {
+      "name": "Piriformis-SMR",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 538,
+    "fields": {
+      "name": "Plank",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 539,
+    "fields": {
+      "name": "Plate Pinch",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 540,
+    "fields": {
+      "name": "Plate Twist",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 541,
+    "fields": {
+      "name": "Platform Hamstring Slides",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 542,
+    "fields": {
+      "name": "Plie Dumbbell Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 543,
+    "fields": {
+      "name": "Plyo Kettlebell Pushups",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 544,
+    "fields": {
+      "name": "Plyo Push-up",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 545,
+    "fields": {
+      "name": "Posterior Tibialis Stretch",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 546,
+    "fields": {
+      "name": "Power Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 547,
+    "fields": {
+      "name": "Power Clean from Blocks",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 548,
+    "fields": {
+      "name": "Power Jerk",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 549,
+    "fields": {
+      "name": "Power Partials",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 550,
+    "fields": {
+      "name": "Power Snatch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 551,
+    "fields": {
+      "name": "Power Snatch from Blocks",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 552,
+    "fields": {
+      "name": "Power Stairs",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 553,
+    "fields": {
+      "name": "Preacher Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 554,
+    "fields": {
+      "name": "Preacher Hammer Dumbbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 555,
+    "fields": {
+      "name": "Press Sit-Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 556,
+    "fields": {
+      "name": "Prone Manual Hamstring",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 557,
+    "fields": {
+      "name": "Prowler Sprint",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 558,
+    "fields": {
+      "name": "Pull Through",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 559,
+    "fields": {
+      "name": "Pullups",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 560,
+    "fields": {
+      "name": "Push-Up Wide",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 561,
+    "fields": {
+      "name": "Push-Ups - Close Triceps Position",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 562,
+    "fields": {
+      "name": "Push-Ups With Feet Elevated",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 563,
+    "fields": {
+      "name": "Push-Ups With Feet On An Exercise Ball",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 564,
+    "fields": {
+      "name": "Push Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 565,
+    "fields": {
+      "name": "Push Press - Behind the Neck",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 566,
+    "fields": {
+      "name": "Push Up to Side Plank",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 567,
+    "fields": {
+      "name": "Pushups",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 568,
+    "fields": {
+      "name": "Pushups (Close and Wide Hand Positions)",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 569,
+    "fields": {
+      "name": "Pyramid",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 570,
+    "fields": {
+      "name": "Quad Stretch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 571,
+    "fields": {
+      "name": "Quadriceps-SMR",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 572,
+    "fields": {
+      "name": "Quick Leap",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 573,
+    "fields": {
+      "name": "Rack Delivery",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 574,
+    "fields": {
+      "name": "Rack Pull with Bands",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 575,
+    "fields": {
+      "name": "Rack Pulls",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 576,
+    "fields": {
+      "name": "Rear Leg Raises",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 577,
+    "fields": {
+      "name": "Recumbent Bike",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 578,
+    "fields": {
+      "name": "Return Push from Stance",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 579,
+    "fields": {
+      "name": "Reverse Band Bench Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 580,
+    "fields": {
+      "name": "Reverse Band Box Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 581,
+    "fields": {
+      "name": "Reverse Band Deadlift",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 582,
+    "fields": {
+      "name": "Reverse Band Power Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 583,
+    "fields": {
+      "name": "Reverse Band Sumo Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 584,
+    "fields": {
+      "name": "Reverse Barbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 585,
+    "fields": {
+      "name": "Reverse Barbell Preacher Curls",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 586,
+    "fields": {
+      "name": "Reverse Cable Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 587,
+    "fields": {
+      "name": "Reverse Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 588,
+    "fields": {
+      "name": "Reverse Flyes",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 589,
+    "fields": {
+      "name": "Reverse Flyes With External Rotation",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 590,
+    "fields": {
+      "name": "Reverse Grip Bent-Over Rows",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 591,
+    "fields": {
+      "name": "Reverse Grip Triceps Pushdown",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 592,
+    "fields": {
+      "name": "Reverse Hyperextension",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 593,
+    "fields": {
+      "name": "Reverse Machine Flyes",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 594,
+    "fields": {
+      "name": "Reverse Plate Curls",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 595,
+    "fields": {
+      "name": "Reverse Triceps Bench Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 596,
+    "fields": {
+      "name": "Rhomboids-SMR",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 597,
+    "fields": {
+      "name": "Rickshaw Carry",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 598,
+    "fields": {
+      "name": "Rickshaw Deadlift",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 599,
+    "fields": {
+      "name": "Ring Dips",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 600,
+    "fields": {
+      "name": "Rocket Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 601,
+    "fields": {
+      "name": "Rocking Standing Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 602,
+    "fields": {
+      "name": "Rocky Pull-Ups/Pulldowns",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 603,
+    "fields": {
+      "name": "Romanian Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 604,
+    "fields": {
+      "name": "Romanian Deadlift from Deficit",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 605,
+    "fields": {
+      "name": "Rope Climb",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 606,
+    "fields": {
+      "name": "Rope Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 607,
+    "fields": {
+      "name": "Rope Jumping",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 608,
+    "fields": {
+      "name": "Rope Straight-Arm Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 609,
+    "fields": {
+      "name": "Round The World Shoulder Stretch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 610,
+    "fields": {
+      "name": "Rowing, Stationary",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 611,
+    "fields": {
+      "name": "Runner's Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 612,
+    "fields": {
+      "name": "Running, Treadmill",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 613,
+    "fields": {
+      "name": "Russian Twist",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 614,
+    "fields": {
+      "name": "Sandbag Load",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 615,
+    "fields": {
+      "name": "Scapular Pull-Up",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 616,
+    "fields": {
+      "name": "Scissor Kick",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 617,
+    "fields": {
+      "name": "Scissors Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 618,
+    "fields": {
+      "name": "Seated Band Hamstring Curl",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 619,
+    "fields": {
+      "name": "Seated Barbell Military Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 620,
+    "fields": {
+      "name": "Seated Barbell Twist",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 621,
+    "fields": {
+      "name": "Seated Bent-Over One-Arm Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 622,
+    "fields": {
+      "name": "Seated Bent-Over Rear Delt Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 623,
+    "fields": {
+      "name": "Seated Bent-Over Two-Arm Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 624,
+    "fields": {
+      "name": "Seated Biceps",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 625,
+    "fields": {
+      "name": "Seated Cable Rows",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 626,
+    "fields": {
+      "name": "Seated Cable Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 627,
+    "fields": {
+      "name": "Seated Machine Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 628,
+    "fields": {
+      "name": "Seated Calf Stretch",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 629,
+    "fields": {
+      "name": "Seated Close-Grip Concentration Barbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 630,
+    "fields": {
+      "name": "Seated Dumbbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 631,
+    "fields": {
+      "name": "Seated Dumbbell Inner Biceps Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 632,
+    "fields": {
+      "name": "Seated Dumbbell Palms-Down Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 633,
+    "fields": {
+      "name": "Seated Dumbbell Palms-Up Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 634,
+    "fields": {
+      "name": "Seated Dumbbell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 635,
+    "fields": {
+      "name": "Seated Flat Bench Leg Pull-In",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 636,
+    "fields": {
+      "name": "Seated Floor Hamstring Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 637,
+    "fields": {
+      "name": "Seated Front Deltoid",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 638,
+    "fields": {
+      "name": "Seated Glute",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 639,
+    "fields": {
+      "name": "Seated Good Mornings",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 640,
+    "fields": {
+      "name": "Seated Hamstring",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 641,
+    "fields": {
+      "name": "Seated Hamstring and Calf Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 642,
+    "fields": {
+      "name": "Seated Head Harness Neck Resistance",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 643,
+    "fields": {
+      "name": "Seated Leg Curl",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 644,
+    "fields": {
+      "name": "Seated Leg Tucks",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 645,
+    "fields": {
+      "name": "Seated One-Arm Dumbbell Palms-Down Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 646,
+    "fields": {
+      "name": "Seated One-Arm Dumbbell Palms-Up Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 647,
+    "fields": {
+      "name": "Seated One-arm Cable Pulley Rows",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 648,
+    "fields": {
+      "name": "Seated Overhead Stretch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 649,
+    "fields": {
+      "name": "Seated Palm-Up Barbell Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 650,
+    "fields": {
+      "name": "Seated Palms-Down Barbell Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 651,
+    "fields": {
+      "name": "Seated Side Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 652,
+    "fields": {
+      "name": "Seated Triceps Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 653,
+    "fields": {
+      "name": "Seated Two-Arm Palms-Up Low-Pulley Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 654,
+    "fields": {
+      "name": "See-Saw Press (Alternating Side Press)",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 655,
+    "fields": {
+      "name": "Shotgun Row",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 656,
+    "fields": {
+      "name": "Shoulder Circles",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 657,
+    "fields": {
+      "name": "Shoulder Press - With Bands",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 658,
+    "fields": {
+      "name": "Shoulder Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 659,
+    "fields": {
+      "name": "Shoulder Stretch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 660,
+    "fields": {
+      "name": "Side-Lying Floor Stretch",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 661,
+    "fields": {
+      "name": "Side Bridge",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 662,
+    "fields": {
+      "name": "Side Hop-Sprint",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 663,
+    "fields": {
+      "name": "Side Jackknife",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 664,
+    "fields": {
+      "name": "Side Lateral Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 665,
+    "fields": {
+      "name": "Side Laterals to Front Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 666,
+    "fields": {
+      "name": "Side Leg Raises",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 667,
+    "fields": {
+      "name": "Side Lying Groin Stretch",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 668,
+    "fields": {
+      "name": "Side Neck Stretch",
+      "muscle_group": 13
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 669,
+    "fields": {
+      "name": "Side Standing Long Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 670,
+    "fields": {
+      "name": "Side To Side Chins",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 671,
+    "fields": {
+      "name": "Side Wrist Pull",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 672,
+    "fields": {
+      "name": "Side to Side Box Shuffle",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 673,
+    "fields": {
+      "name": "Single-Arm Cable Crossover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 674,
+    "fields": {
+      "name": "Single-Arm Linear Jammer",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 675,
+    "fields": {
+      "name": "Single-Arm Push-Up",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 676,
+    "fields": {
+      "name": "Single-Cone Sprint Drill",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 677,
+    "fields": {
+      "name": "Single-Leg High Box Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 678,
+    "fields": {
+      "name": "Single-Leg Hop Progression",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 679,
+    "fields": {
+      "name": "Single-Leg Lateral Hop",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 680,
+    "fields": {
+      "name": "Single-Leg Leg Extension",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 681,
+    "fields": {
+      "name": "Single-Leg Stride Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 682,
+    "fields": {
+      "name": "Single Dumbbell Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 683,
+    "fields": {
+      "name": "Single Leg Butt Kick",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 684,
+    "fields": {
+      "name": "Single Leg Glute Bridge",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 685,
+    "fields": {
+      "name": "Single Leg Push-off",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 686,
+    "fields": {
+      "name": "Sit-Up",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 687,
+    "fields": {
+      "name": "Sit Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 688,
+    "fields": {
+      "name": "Skating",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 689,
+    "fields": {
+      "name": "Sled Drag - Harness",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 690,
+    "fields": {
+      "name": "Sled Overhead Backward Walk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 691,
+    "fields": {
+      "name": "Sled Overhead Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 692,
+    "fields": {
+      "name": "Sled Push",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 693,
+    "fields": {
+      "name": "Sled Reverse Flye",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 694,
+    "fields": {
+      "name": "Sled Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 695,
+    "fields": {
+      "name": "Sledgehammer Swings",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 696,
+    "fields": {
+      "name": "Smith Incline Shoulder Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 697,
+    "fields": {
+      "name": "Smith Machine Behind the Back Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 698,
+    "fields": {
+      "name": "Smith Machine Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 699,
+    "fields": {
+      "name": "Smith Machine Bent Over Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 700,
+    "fields": {
+      "name": "Smith Machine Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 701,
+    "fields": {
+      "name": "Smith Machine Close-Grip Bench Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 702,
+    "fields": {
+      "name": "Smith Machine Decline Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 703,
+    "fields": {
+      "name": "Smith Machine Hang Power Clean",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 704,
+    "fields": {
+      "name": "Smith Machine Hip Raise",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 705,
+    "fields": {
+      "name": "Smith Machine Incline Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 706,
+    "fields": {
+      "name": "Smith Machine Leg Press",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 707,
+    "fields": {
+      "name": "Smith Machine One-Arm Upright Row",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 708,
+    "fields": {
+      "name": "Smith Machine Overhead Shoulder Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 709,
+    "fields": {
+      "name": "Smith Machine Pistol Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 710,
+    "fields": {
+      "name": "Smith Machine Reverse Calf Raises",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 711,
+    "fields": {
+      "name": "Smith Machine Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 712,
+    "fields": {
+      "name": "Smith Machine Stiff-Legged Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 713,
+    "fields": {
+      "name": "Smith Machine Upright Row",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 714,
+    "fields": {
+      "name": "Smith Single-Leg Split Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 715,
+    "fields": {
+      "name": "Snatch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 716,
+    "fields": {
+      "name": "Snatch Balance",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 717,
+    "fields": {
+      "name": "Snatch Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 718,
+    "fields": {
+      "name": "Snatch Pull",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 719,
+    "fields": {
+      "name": "Snatch Shrug",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 720,
+    "fields": {
+      "name": "Snatch from Blocks",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 721,
+    "fields": {
+      "name": "Speed Band Overhead Triceps",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 722,
+    "fields": {
+      "name": "Speed Box Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 723,
+    "fields": {
+      "name": "Speed Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 724,
+    "fields": {
+      "name": "Spell Caster",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 725,
+    "fields": {
+      "name": "Spider Crawl",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 726,
+    "fields": {
+      "name": "Spider Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 727,
+    "fields": {
+      "name": "Spinal Stretch",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 728,
+    "fields": {
+      "name": "Split Clean",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 729,
+    "fields": {
+      "name": "Split Jerk",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 730,
+    "fields": {
+      "name": "Split Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 731,
+    "fields": {
+      "name": "Split Snatch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 732,
+    "fields": {
+      "name": "Split Squat with Dumbbells",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 733,
+    "fields": {
+      "name": "Split Squats",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 734,
+    "fields": {
+      "name": "Squat Jerk",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 735,
+    "fields": {
+      "name": "Squat with Bands",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 736,
+    "fields": {
+      "name": "Squat with Chains",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 737,
+    "fields": {
+      "name": "Squat with Plate Movers",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 738,
+    "fields": {
+      "name": "Squats - With Bands",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 739,
+    "fields": {
+      "name": "Stairmaster",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 740,
+    "fields": {
+      "name": "Standing Alternating Dumbbell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 741,
+    "fields": {
+      "name": "Standing Barbell Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 742,
+    "fields": {
+      "name": "Standing Barbell Press Behind Neck",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 743,
+    "fields": {
+      "name": "Standing Bent-Over One-Arm Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 744,
+    "fields": {
+      "name": "Standing Bent-Over Two-Arm Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 745,
+    "fields": {
+      "name": "Standing Biceps Cable Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 746,
+    "fields": {
+      "name": "Standing Biceps Stretch",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 747,
+    "fields": {
+      "name": "Standing Bradford Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 748,
+    "fields": {
+      "name": "Standing Cable Chest Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 749,
+    "fields": {
+      "name": "Standing Cable Lift",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 750,
+    "fields": {
+      "name": "Standing Cable Wood Chop",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 751,
+    "fields": {
+      "name": "Standing Machine Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 752,
+    "fields": {
+      "name": "Standing Concentration Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 753,
+    "fields": {
+      "name": "Standing Dumbbell Calf Raise",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 754,
+    "fields": {
+      "name": "Standing Dumbbell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 755,
+    "fields": {
+      "name": "Standing Dumbbell Reverse Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 756,
+    "fields": {
+      "name": "Standing Dumbbell Straight-Arm Front Delt Raise Above Head",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 757,
+    "fields": {
+      "name": "Standing Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 758,
+    "fields": {
+      "name": "Standing Dumbbell Upright Row",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 759,
+    "fields": {
+      "name": "Standing Elevated Quad Stretch",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 760,
+    "fields": {
+      "name": "Standing Front Barbell Raise Over Head",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 761,
+    "fields": {
+      "name": "Standing Gastrocnemius Calf Stretch",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 762,
+    "fields": {
+      "name": "Standing Hamstring and Calf Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 763,
+    "fields": {
+      "name": "Standing Hip Circles",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 764,
+    "fields": {
+      "name": "Standing Hip Flexors",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 765,
+    "fields": {
+      "name": "Standing Inner-Biceps Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 766,
+    "fields": {
+      "name": "Standing Lateral Stretch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 767,
+    "fields": {
+      "name": "Standing Leg Curl",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 768,
+    "fields": {
+      "name": "Standing Long Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 769,
+    "fields": {
+      "name": "Standing Low-Pulley Deltoid Raise",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 770,
+    "fields": {
+      "name": "Standing Low-Pulley One-Arm Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 771,
+    "fields": {
+      "name": "Standing Military Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 772,
+    "fields": {
+      "name": "Standing Olympic Plate Hand Squeeze",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 773,
+    "fields": {
+      "name": "Standing One-Arm Cable Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 774,
+    "fields": {
+      "name": "Standing One-Arm Dumbbell Curl Over Incline Bench",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 775,
+    "fields": {
+      "name": "Standing One-Arm Dumbbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 776,
+    "fields": {
+      "name": "Standing Overhead Barbell Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 777,
+    "fields": {
+      "name": "Standing Palm-In One-Arm Dumbbell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 778,
+    "fields": {
+      "name": "Standing Palms-In Dumbbell Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 779,
+    "fields": {
+      "name": "Standing Palms-Up Barbell Behind The Back Wrist Curl",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 780,
+    "fields": {
+      "name": "Standing Pelvic Tilt",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 781,
+    "fields": {
+      "name": "Standing Rope Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 782,
+    "fields": {
+      "name": "Standing Soleus And Achilles Stretch",
+      "muscle_group": 5
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 783,
+    "fields": {
+      "name": "Standing Toe Touches",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 784,
+    "fields": {
+      "name": "Standing Towel Triceps Extension",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 785,
+    "fields": {
+      "name": "Standing Two-Arm Overhead Throw",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 786,
+    "fields": {
+      "name": "Star Jump",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 787,
+    "fields": {
+      "name": "Step-up with Knee Raise",
+      "muscle_group": 8
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 788,
+    "fields": {
+      "name": "Step Mill",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 789,
+    "fields": {
+      "name": "Stiff-Legged Barbell Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 790,
+    "fields": {
+      "name": "Stiff-Legged Dumbbell Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 791,
+    "fields": {
+      "name": "Stiff Leg Barbell Good Morning",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 792,
+    "fields": {
+      "name": "Stomach Vacuum",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 793,
+    "fields": {
+      "name": "Straight-Arm Dumbbell Pullover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 794,
+    "fields": {
+      "name": "Straight-Arm Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 795,
+    "fields": {
+      "name": "Straight Bar Bench Mid Rows",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 796,
+    "fields": {
+      "name": "Straight Raises on Incline Bench",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 797,
+    "fields": {
+      "name": "Stride Jump Crossover",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 798,
+    "fields": {
+      "name": "Sumo Deadlift",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 799,
+    "fields": {
+      "name": "Sumo Deadlift with Bands",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 800,
+    "fields": {
+      "name": "Sumo Deadlift with Chains",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 801,
+    "fields": {
+      "name": "Superman",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 802,
+    "fields": {
+      "name": "Supine Chest Throw",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 803,
+    "fields": {
+      "name": "Supine One-Arm Overhead Throw",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 804,
+    "fields": {
+      "name": "Supine Two-Arm Overhead Throw",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 805,
+    "fields": {
+      "name": "Suspended Fallout",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 806,
+    "fields": {
+      "name": "Suspended Push-Up",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 807,
+    "fields": {
+      "name": "Suspended Reverse Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 808,
+    "fields": {
+      "name": "Suspended Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 809,
+    "fields": {
+      "name": "Suspended Split Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 810,
+    "fields": {
+      "name": "Svend Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 811,
+    "fields": {
+      "name": "T-Bar Row with Handle",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 812,
+    "fields": {
+      "name": "Tate Press",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 813,
+    "fields": {
+      "name": "The Straddle",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 814,
+    "fields": {
+      "name": "Thigh Abductor",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 815,
+    "fields": {
+      "name": "Thigh Adductor",
+      "muscle_group": 3
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 816,
+    "fields": {
+      "name": "Tire Flip",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 817,
+    "fields": {
+      "name": "Toe Touchers",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 818,
+    "fields": {
+      "name": "Torso Rotation",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 819,
+    "fields": {
+      "name": "Trail Running/Walking",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 820,
+    "fields": {
+      "name": "Trap Bar Deadlift",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 821,
+    "fields": {
+      "name": "Tricep Dumbbell Kickback",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 822,
+    "fields": {
+      "name": "Tricep Side Stretch",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 823,
+    "fields": {
+      "name": "Triceps Overhead Extension with Rope",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 824,
+    "fields": {
+      "name": "Triceps Pushdown",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 825,
+    "fields": {
+      "name": "Triceps Pushdown - Rope Attachment",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 826,
+    "fields": {
+      "name": "Triceps Pushdown - V-Bar Attachment",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 827,
+    "fields": {
+      "name": "Triceps Stretch",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 828,
+    "fields": {
+      "name": "Tuck Crunch",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 829,
+    "fields": {
+      "name": "Dumbbell Preacher Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 830,
+    "fields": {
+      "name": "Two-Arm Kettlebell Clean",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 831,
+    "fields": {
+      "name": "Two-Arm Kettlebell Jerk",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 832,
+    "fields": {
+      "name": "Two-Arm Kettlebell Military Press",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 833,
+    "fields": {
+      "name": "Two-Arm Kettlebell Row",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 834,
+    "fields": {
+      "name": "Underhand Cable Pulldowns",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 835,
+    "fields": {
+      "name": "Upper Back-Leg Grab",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 836,
+    "fields": {
+      "name": "Upper Back Stretch",
+      "muscle_group": 12
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 837,
+    "fields": {
+      "name": "Upright Barbell Row",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 838,
+    "fields": {
+      "name": "Upright Cable Row",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 839,
+    "fields": {
+      "name": "Upright Row - With Bands",
+      "muscle_group": 16
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 840,
+    "fields": {
+      "name": "Upward Stretch",
+      "muscle_group": 15
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 841,
+    "fields": {
+      "name": "V-Bar Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 842,
+    "fields": {
+      "name": "V-Bar Pullup",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 843,
+    "fields": {
+      "name": "Vertical Swing",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 844,
+    "fields": {
+      "name": "Walking, Treadmill",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 845,
+    "fields": {
+      "name": "Weighted Ball Hyperextension",
+      "muscle_group": 11
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 846,
+    "fields": {
+      "name": "Weighted Ball Side Bend",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 847,
+    "fields": {
+      "name": "Weighted Bench Dip",
+      "muscle_group": 17
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 848,
+    "fields": {
+      "name": "Weighted Crunches",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 849,
+    "fields": {
+      "name": "Weighted Jump Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 850,
+    "fields": {
+      "name": "Weighted Pull Ups",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 851,
+    "fields": {
+      "name": "Weighted Sissy Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 852,
+    "fields": {
+      "name": "Weighted Sit-Ups - With Bands",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 853,
+    "fields": {
+      "name": "Weighted Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 854,
+    "fields": {
+      "name": "Wide-Grip Barbell Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 855,
+    "fields": {
+      "name": "Wide-Grip Decline Barbell Bench Press",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 856,
+    "fields": {
+      "name": "Wide-Grip Decline Barbell Pullover",
+      "muscle_group": 6
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 857,
+    "fields": {
+      "name": "Wide-Grip Lat Pulldown",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 858,
+    "fields": {
+      "name": "Wide-Grip Pulldown Behind The Neck",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 859,
+    "fields": {
+      "name": "Wide-Grip Rear Pull-Up",
+      "muscle_group": 10
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 860,
+    "fields": {
+      "name": "Wide-Grip Standing Barbell Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 861,
+    "fields": {
+      "name": "Wide Stance Barbell Squat",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 862,
+    "fields": {
+      "name": "Wide Stance Stiff Legs",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 863,
+    "fields": {
+      "name": "Wind Sprints",
+      "muscle_group": 2
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 864,
+    "fields": {
+      "name": "Windmills",
+      "muscle_group": 1
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 865,
+    "fields": {
+      "name": "World's Greatest Stretch",
+      "muscle_group": 9
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 866,
+    "fields": {
+      "name": "Wrist Circles",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 867,
+    "fields": {
+      "name": "Wrist Roller",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 868,
+    "fields": {
+      "name": "Wrist Rotations with Straight Bar",
+      "muscle_group": 7
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 869,
+    "fields": {
+      "name": "Yoke Walk",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 870,
+    "fields": {
+      "name": "Zercher Squats",
+      "muscle_group": 14
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 871,
+    "fields": {
+      "name": "Zottman Curl",
+      "muscle_group": 4
+    }
+  },
+  {
+    "model": "bot.exercise",
+    "pk": 872,
+    "fields": {
+      "name": "Zottman Preacher Curl",
+      "muscle_group": 4
+    }
+  }
+]
