@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'bot.apps.BotConfig',
+    'GTTG.bot.apps.BotConfig',
 ]
 
 MIDDLEWARE = [
