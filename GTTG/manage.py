@@ -11,7 +11,23 @@ def main():
     if str(REPO_ROOT) not in sys.path:
         sys.path.insert(0, str(REPO_ROOT))
 
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GTTG.GTTG.settings')
+    env_val = os.environ.get('DJANGO_SETTINGS_MODULE')
+    if env_val == 'GTTG.GTTG':
+        os.environ['DJANGO_SETTINGS_MODULE'] = 'GTTG.GTTG.settings'
+    elif not env_val:
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GTTG.GTTG.settings')
+
+    try:
+        __import__(os.environ['DJANGO_SETTINGS_MODULE'])
+    except Exception:
+        for candidate in ('GTTG.GTTG.settings', 'GTTG.settings'):
+            try:
+                __import__(candidate)
+                os.environ['DJANGO_SETTINGS_MODULE'] = candidate
+                break
+            except Exception:
+                continue
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
