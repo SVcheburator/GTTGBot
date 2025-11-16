@@ -26,10 +26,10 @@ environ.Env.read_env(BASE_DIR / '.env')
 SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG', default='False')
+DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['gttgbot-production.up.railway.app']
-
+CSRF_TRUSTED_ORIGINS = ['https://gttgbot-production.up.railway.app']
 
 # Application definition
 
@@ -131,3 +131,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Behind Railway proxy
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
