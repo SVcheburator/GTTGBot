@@ -30,7 +30,7 @@ class CycleDaySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = CycleDay
-        fields = ['id', 'cycle', 'day_number', 'is_training_day', 'muscle_groups', 'default_exercises']
+        fields = ['id', 'cycle', 'day_number', 'is_training_day', 'muscle_groups', 'default_exercises', 'title']
 
 
 class TrainingCycleSerializer(serializers.ModelSerializer):

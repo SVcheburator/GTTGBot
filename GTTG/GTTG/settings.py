@@ -31,6 +31,9 @@ DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = ['gttgbot-production.up.railway.app']
 CSRF_TRUSTED_ORIGINS = ['https://gttgbot-production.up.railway.app']
 
+if DEBUG:
+    ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
+
 # Application definition
 
 INSTALLED_APPS = [
