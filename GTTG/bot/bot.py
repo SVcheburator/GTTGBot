@@ -263,13 +263,15 @@ def process_exercises_for_day(message):
             "day_number": current_day,
             "is_training_day": True,
             "muscle_groups": group_ids,
-            "default_exercises": ex_ids
+            "default_exercises": ex_ids,
+            "title": None
         })
         data.pop('pending_exercises_for_day', None)
         data.pop('selected_exercises_for_day', None)
         set_user_data(user_id, data)
         bot.send_message(message.chat.id, "Exercises chosen successfully ✅", reply_markup=types.ReplyKeyboardRemove())
-        proceed_next_day(message)
+        msg = bot.send_message(message.chat.id, "Enter a title for this training day or send '-' to skip:")
+        bot.register_next_step_handler(msg, process_day_title)
     else:
         valid_names = [ex["name"] for ex in available_ex]
         if text not in valid_names:
@@ -280,6 +282,24 @@ def process_exercises_for_day(message):
             data['selected_exercises_for_day'] = selected_ex
             set_user_data(user_id, data)
         show_day_exercises_page(message, page)
+
+
+def process_day_title(message):
+    user_id = message.from_user.id
+    data = get_user_data(user_id)
+    title_raw = message.text.strip()
+    title = None if title_raw == '-' or not title_raw else title_raw[:100]
+    current_day = data.get('current_day')
+    for d in data.get('days', []):
+        if d['day_number'] == current_day and d['is_training_day']:
+            d['title'] = title
+            break
+    set_user_data(user_id, data)
+    if title:
+        bot.send_message(message.chat.id, f"Title saved: {title}")
+    else:
+        bot.send_message(message.chat.id, "Title skipped.")
+    proceed_next_day(message)
 
 
 def proceed_next_day(message):
@@ -316,7 +336,8 @@ def finalize_plan(message):
             "cycle": cycle_id,
             "day_number": day['day_number'],
             "is_training_day": day['is_training_day'],
-            "muscle_groups": day['muscle_groups']
+            "muscle_groups": day['muscle_groups'],
+            "title": day.get('title')
         }
         if day.get("default_exercises") is not None:
             day_payload["default_exercises"] = day["default_exercises"]
@@ -353,7 +374,8 @@ def generate_plan_summary(plan_data, days_data=None):
         unique_days.sort(key=lambda x: x['day_number'])
 
         for day in unique_days:
-            summary += f"*Day {day['day_number']}:* "
+            title_part = f" ({day.get('title')})" if day.get('title') else ""
+            summary += f"*Day {day['day_number']}{title_part}:* "
             if day['is_training_day']:
                 group_names = [group_map.get(gid, f"ID:{gid}") for gid in day['muscle_groups']]
                 summary += f"Training day 💪\nMuscle groups: *{', '.join(group_names)}*\n"
@@ -577,7 +599,8 @@ def process_workout_type(message):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
         for d in training_days:
             group_names = [group_map.get(gid, f"ID:{gid}") for gid in d['muscle_groups']]
-            day_label = f"Day {d['day_number']}: " + ", ".join(group_names)
+            title_part = f" ({d.get('title')})" if d.get('title') else ""
+            day_label = f"Day {d['day_number']}{title_part}: " + ", ".join(group_names)
             markup.add(day_label)
             day_number_to_label[d['day_number']] = day_label
             day_number_to_day[d['day_number']] = d

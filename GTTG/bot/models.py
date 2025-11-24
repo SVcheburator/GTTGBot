@@ -42,12 +42,16 @@ class CycleDay(models.Model):
     is_training_day = models.BooleanField(default=True)
     muscle_groups = models.ManyToManyField(MuscleGroup, blank=True)
     default_exercises = models.ManyToManyField(Exercise, blank=True)
+    title = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         unique_together = ('cycle', 'day_number')
 
     def __str__(self):
-        return f"{self.cycle.name} - Day {self.day_number}"
+        base = f"{self.cycle.name} - Day {self.day_number}"
+        if self.title:
+            return f"{base} ({self.title})"
+        return base
 
 
 class Workout(models.Model):
