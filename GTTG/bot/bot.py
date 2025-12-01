@@ -146,8 +146,8 @@ def process_plan_length(message):
         bot.register_next_step_handler(msg, process_plan_length)
 
 
-def ask_day_type(message):
-    user_id = message.from_user.id
+def ask_day_type(message, user_id_override=None):
+    user_id = user_id_override or message.from_user.id
     data = get_user_data(user_id)
     current_day = data['current_day']
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
@@ -192,7 +192,7 @@ def process_day_type(message):
             "muscle_groups": []
         })
         set_user_data(user_id, data)
-        proceed_next_day(message)
+        confirm_created_day(message)
 
 
 def process_muscle_groups(message):
@@ -299,22 +299,88 @@ def process_day_title(message):
         bot.send_message(message.chat.id, f"Title saved: {title}")
     else:
         bot.send_message(message.chat.id, "Title skipped.")
-    proceed_next_day(message)
+    confirm_created_day(message)
 
 
-def proceed_next_day(message):
+def _summarize_day_for_confirmation(day):
+    group_map = {g['id']: g['name'] for g in get_cached_muscle_groups()}
+    if day.get('is_training_day'):
+        groups = [group_map.get(gid, f"ID:{gid}") for gid in (day.get('muscle_groups') or [])]
+        groups_part = ", ".join(groups) if groups else "—"
+        title_part = f" ({day.get('title')})" if day.get('title') else ""
+        ex_count = len(day.get('default_exercises') or [])
+        return f"*Day {day['day_number']}{title_part}:* Training 💪\nMuscle groups: *{groups_part}*\nExercises selected: *{ex_count}*"
+    else:
+        return f"*Day {day['day_number']}:* Rest day 😴"
+
+
+def confirm_created_day(message):
     user_id = message.from_user.id
+    data = get_user_data(user_id)
+    current_day = data.get('current_day')
+    day_obj = None
+    for d in reversed(data.get('days', [])):
+        if d.get('day_number') == current_day:
+            day_obj = d
+            break
+    if not day_obj:
+        bot.send_message(message.chat.id, "❌ Error: day data not found. Please try again.")
+        return
+
+    summary = _summarize_day_for_confirmation(day_obj)
+    markup = types.InlineKeyboardMarkup()
+    markup.add(
+        types.InlineKeyboardButton("✅ Confirm", callback_data=f"confirm_day_{current_day}"),
+        types.InlineKeyboardButton("🗑️ Delete and redo", callback_data=f"delete_day_{current_day}")
+    )
+    bot.send_message(message.chat.id, f"Please confirm the day:\n\n{summary}", parse_mode="Markdown", reply_markup=markup)
+
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("confirm_day_"))
+def handle_confirm_day(call):
+    user_id = call.from_user.id
+    bot.answer_callback_query(call.id, "Day confirmed ✅")
+    proceed_next_day(call.message, user_id_override=user_id)
+
+
+@bot.callback_query_handler(func=lambda call: call.data.startswith("delete_day_"))
+def handle_delete_day(call):
+    user_id = call.from_user.id
+    try:
+        day_num = int(call.data.split("delete_day_")[1])
+    except Exception:
+        bot.answer_callback_query(call.id)
+        return
+    data = get_user_data(user_id)
+    
+    removed = False
+    for i in range(len(data.get('days', [])) - 1, -1, -1):
+        if data['days'][i].get('day_number') == day_num:
+            data['days'].pop(i)
+            removed = True
+            break
+    set_user_data(user_id, data)
+    bot.answer_callback_query(call.id, "Day deleted. Redo it.")
+    if removed:
+        bot.send_message(call.message.chat.id, f"🗑️ Day {day_num} deleted. Let's create it again.")
+    else:
+        bot.send_message(call.message.chat.id, f"⚠️ Day {day_num} not found. Let's create it again.")
+    ask_day_type(call.message, user_id_override=user_id)
+
+
+def proceed_next_day(message, user_id_override=None):
+    user_id = user_id_override or message.from_user.id
     data = get_user_data(user_id)
     data['current_day'] += 1
     set_user_data(user_id, data)
     if data['current_day'] > data['length']:
-        finalize_plan(message)
+        finalize_plan(message, user_id_override=user_id)
     else:
-        ask_day_type(message)
+        ask_day_type(message, user_id_override=user_id)
 
 
-def finalize_plan(message):
-    user_id = message.from_user.id
+def finalize_plan(message, user_id_override=None):
+    user_id = user_id_override or message.from_user.id
     data = get_user_data(user_id)
 
     cycle_payload = {
