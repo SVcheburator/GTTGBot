@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from telebot import types
 import redis
 import json
+from datetime import datetime  # added
 
 load_dotenv()
 
@@ -1040,13 +1041,28 @@ def get_group_names_from_workout(workout):
     return names
 
 
+def format_date_dmy(date_str):
+    try:
+        if not date_str:
+            return ""
+        s = date_str.rstrip('Z')
+        try:
+            dt = datetime.fromisoformat(s)
+        except Exception:
+            dt = datetime.strptime(date_str[:10], "%Y-%m-%d")
+        return dt.strftime("%d-%m-%Y")
+    except Exception:
+        return date_str
+
+
 def format_workout_summary(workout):
     date_str = workout.get("date") or ""
     is_from_plan = workout.get("is_from_plan", True)
     group_names = get_group_names_from_workout(workout)
     groups_part = ", ".join(group_names) if group_names else "No groups"
     suffix = "" if is_from_plan else " (custom)"
-    header = f"{date_str} - {groups_part}{suffix}"
+    display_date = format_date_dmy(date_str) if date_str else ""
+    header = f"{display_date} - {groups_part}{suffix}"
 
     by_ex = {}
     for we in workout.get("exercises", []):
@@ -1088,7 +1104,8 @@ def build_history_item_label(workout, group_map):
             names = [group_map.get(i, f"ID:{i}") for i in ids]
     groups_part = ", ".join(names) if names else "No groups"
     suffix = "" if is_from_plan else " (custom)"
-    return f"{date_str} - {groups_part}{suffix}"
+    display_date = format_date_dmy(date_str) if date_str else ""
+    return f"{display_date} - {groups_part}{suffix}"
 
 
 def build_history_markup(user_id, page=0):
