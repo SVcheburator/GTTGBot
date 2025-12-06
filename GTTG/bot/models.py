@@ -59,6 +59,7 @@ class Workout(models.Model):
     date = models.DateField(default=datetime.date.today)
     is_from_plan = models.BooleanField(default=True)
     muscle_groups = models.ManyToManyField(MuscleGroup, blank=True)
+    cycle_day = models.ForeignKey(CycleDay, null=True, blank=True, on_delete=models.SET_NULL, related_name='workouts')
 
     def __str__(self):
         return f"{self.user} - {self.date}"

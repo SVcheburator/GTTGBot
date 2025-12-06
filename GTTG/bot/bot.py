@@ -441,11 +441,11 @@ def generate_plan_summary(plan_data, days_data=None):
         unique_days.sort(key=lambda x: x['day_number'])
 
         for day in unique_days:
-            title_part = f" ({day.get('title')})" if day.get('title') else ""
-            summary += f"*Day {day['day_number']}{title_part}:* "
+            title_part = f"{day.get('title')}" if day.get('title') else ""
+            summary += f"Day {day['day_number']}: *{title_part}* "
             if day['is_training_day']:
                 group_names = [group_map.get(gid, f"ID:{gid}") for gid in day['muscle_groups']]
-                summary += f"Training day 💪\nMuscle groups: *{', '.join(group_names)}*\n"
+                summary += f"\nMuscle groups: *{', '.join(group_names)}*\n"
             else:
                 summary += "Rest day 😴\n"
             summary += "\n"
@@ -666,8 +666,10 @@ def process_workout_type(message):
         markup = types.ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
         for d in training_days:
             group_names = [group_map.get(gid, f"ID:{gid}") for gid in d['muscle_groups']]
-            title_part = f" ({d.get('title')})" if d.get('title') else ""
-            day_label = f"Day {d['day_number']}{title_part}: " + ", ".join(group_names)
+            if d.get('title'):
+                day_label = f"Day {d['day_number']}: {d['title']}"
+            else:
+                day_label = f"Day {d['day_number']}: " + ", ".join(group_names)
             markup.add(day_label)
             day_number_to_label[d['day_number']] = day_label
             day_number_to_day[d['day_number']] = d
@@ -725,7 +727,8 @@ def process_select_plan_day(message):
     workout_payload = {
         "telegram_id": user_id,
         "is_from_plan": True,
-        "muscle_groups": selected_day["muscle_groups"]
+        "muscle_groups": selected_day["muscle_groups"],
+        "cycle_day_id": selected_day.get("id")
     }
     resp = requests.post(f"{API_URL}workouts/", json=workout_payload)
 
@@ -1055,14 +1058,46 @@ def format_date_dmy(date_str):
         return date_str
 
 
+def build_history_item_label(workout, group_map):
+    date_str = workout.get("date") or ""
+    is_from_plan = workout.get("is_from_plan", True)
+    title = None
+    cycle_day = workout.get("cycle_day") or {}
+    if is_from_plan and isinstance(cycle_day, dict):
+        title = (cycle_day.get("title") or "").strip() or None
+
+    if title:
+        label_core = title
+    else:
+        names = get_group_names_from_workout(workout)
+        if not names:
+            ids = workout.get("muscle_groups") or []
+            if ids and isinstance(ids[0], int):
+                names = [group_map.get(i, f"ID:{i}") for i in ids]
+        label_core = ", ".join(names) if names else "No groups"
+
+    suffix = "" if is_from_plan else " (custom)"
+    display_date = format_date_dmy(date_str) if date_str else ""
+    return f"{display_date} - {label_core}{suffix}"
+
+
 def format_workout_summary(workout):
     date_str = workout.get("date") or ""
     is_from_plan = workout.get("is_from_plan", True)
-    group_names = get_group_names_from_workout(workout)
-    groups_part = ", ".join(group_names) if group_names else "No groups"
+    title = None
+    cycle_day = workout.get("cycle_day") or {}
+    if is_from_plan and isinstance(cycle_day, dict):
+        title = (cycle_day.get("title") or "").strip() or None
+
+    if title:
+        header_core = title
+    else:
+        group_names = get_group_names_from_workout(workout)
+        header_core = ", ".join(group_names) if group_names else "No groups"
+
     suffix = "" if is_from_plan else " (custom)"
     display_date = format_date_dmy(date_str) if date_str else ""
-    header = f"{display_date} - {groups_part}{suffix}"
+    header = f"{display_date} - {header_core}{suffix}"
 
     by_ex = {}
     for we in workout.get("exercises", []):
@@ -1092,20 +1127,6 @@ def get_user_workouts(telegram_id):
         return items
     except Exception:
         return []
-
-
-def build_history_item_label(workout, group_map):
-    date_str = workout.get("date") or ""
-    is_from_plan = workout.get("is_from_plan", True)
-    names = get_group_names_from_workout(workout)
-    if not names:
-        ids = workout.get("muscle_groups") or []
-        if ids and isinstance(ids[0], int):
-            names = [group_map.get(i, f"ID:{i}") for i in ids]
-    groups_part = ", ".join(names) if names else "No groups"
-    suffix = "" if is_from_plan else " (custom)"
-    display_date = format_date_dmy(date_str) if date_str else ""
-    return f"{display_date} - {groups_part}{suffix}"
 
 
 def build_history_markup(user_id, page=0):
