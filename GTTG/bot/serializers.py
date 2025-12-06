@@ -58,10 +58,12 @@ class WorkoutSerializer(serializers.ModelSerializer):
     exercises = WorkoutExerciseSerializer(many=True, read_only=True)
     muscle_groups = MuscleGroupSerializer(many=True, read_only=True)
     telegram_id = serializers.IntegerField(write_only=True, required=False)
+    cycle_day = CycleDaySerializer(read_only=True)
+    cycle_day_id = serializers.PrimaryKeyRelatedField(source='cycle_day', queryset=CycleDay.objects.all(), write_only=True, required=False)
 
     class Meta:
         model = Workout
-        fields = ['id', 'date', 'user', 'telegram_id', 'is_from_plan', 'muscle_groups', 'exercises']
+        fields = ['id', 'date', 'user', 'telegram_id', 'is_from_plan', 'muscle_groups', 'exercises', 'cycle_day', 'cycle_day_id']
         read_only_fields = ['id', 'date']
     
     def to_representation(self, instance):

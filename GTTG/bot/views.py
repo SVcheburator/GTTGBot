@@ -96,6 +96,7 @@ class WorkoutViewSet(viewsets.ModelViewSet):
         workout_data['user'] = user.id
         workout_data['date'] = date.today().isoformat()
         incoming_groups = workout_data.pop('muscle_groups', None)
+        cycle_day_id = workout_data.pop('cycle_day', None) or workout_data.pop('cycle_day_id', None)
         workout_data.pop('telegram_id', None)
 
         serializer = self.get_serializer(data=workout_data)
@@ -105,6 +106,12 @@ class WorkoutViewSet(viewsets.ModelViewSet):
             try:
                 instance.muscle_groups.set(incoming_groups)
             except Exception:
+                pass
+        if cycle_day_id:
+            try:
+                instance.cycle_day = CycleDay.objects.get(id=cycle_day_id)
+                instance.save(update_fields=['cycle_day'])
+            except CycleDay.DoesNotExist:
                 pass
         headers = self.get_success_headers(serializer.data)
         return Response(self.get_serializer(instance).data, status=status.HTTP_201_CREATED, headers=headers)
