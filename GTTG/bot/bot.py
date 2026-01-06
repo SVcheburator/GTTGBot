@@ -864,6 +864,13 @@ def build_exercise_choice_markup(user_id):
     markup = types.InlineKeyboardMarkup()
     for ex in slice_items:
         markup.add(types.InlineKeyboardButton(text=ex["name"], callback_data=f"ex_choice_{ex['id']}"))
+
+    last_set = data.get('last_set') or {}
+    current_workout_id = data.get('current_workout_id')
+    can_repeat = bool(last_set) and last_set.get('workout_id') == current_workout_id
+    if can_repeat:
+        markup.add(types.InlineKeyboardButton("🔁 Repeat set", callback_data="repeat_set"))
+
     nav_buttons = []
     if total_pages > 1 and page > 0:
         nav_buttons.append(types.InlineKeyboardButton("⬅️ Prev", callback_data="ex_page_prev"))
@@ -977,11 +984,52 @@ def process_set_reps(message):
     resp = requests.post(f"{API_URL}workout-exercises/", json=payload)
 
     if resp.status_code == 201:
+        data['last_set'] = {
+            'workout_id': data.get('current_workout_id'),
+            'exercise_id': data.get('current_exercise_id'),
+            'weight': data.get('current_weight')
+        }
+        set_user_data(user_id, data)
+
         bot.send_message(message.chat.id, "✅ Set logged successfully!")
         show_exercise_choices(message)
     else:
         bot.send_message(message.chat.id, "❌ Failed to log set. Try again.")
         bot.register_next_step_handler(message, process_set_weight)
+
+
+@bot.callback_query_handler(func=lambda call: call.data == "repeat_set")
+def handle_repeat_set(call):
+    user_id = call.from_user.id
+    data = get_user_data(user_id)
+    last = data.get('last_set')
+
+    if not last or last.get('workout_id') != data.get('current_workout_id'):
+        bot.answer_callback_query(call.id, "No previous set to repeat.")
+        return
+
+    exercise = next((ex for ex in data.get("pending_exercises", []) if ex["id"] == last["exercise_id"]), None)
+    exercise_name = exercise["name"] if exercise else "Exercise"
+
+    data['current_exercise_id'] = last['exercise_id']
+    data['current_weight'] = last.get('weight', 0)
+    set_user_data(user_id, data)
+
+    last_msg_id = data.get('last_exercise_choice_msg_id')
+    if last_msg_id:
+        try:
+            bot.edit_message_text(
+                chat_id=call.message.chat.id,
+                message_id=last_msg_id,
+                text=f"🏋️ {exercise_name} (repeat)",
+                reply_markup=None
+            )
+        except Exception:
+            pass
+
+    bot.answer_callback_query(call.id)
+    msg = bot.send_message(call.message.chat.id, "Enter number of reps:")
+    bot.register_next_step_handler(msg, process_set_reps)
 
 
 @bot.callback_query_handler(func=lambda call: call.data == "finish_workout")
