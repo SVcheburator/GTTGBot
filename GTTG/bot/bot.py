@@ -869,7 +869,8 @@ def build_exercise_choice_markup(user_id):
     current_workout_id = data.get('current_workout_id')
     can_repeat = bool(last_set) and last_set.get('workout_id') == current_workout_id
     if can_repeat:
-        markup.add(types.InlineKeyboardButton("🔁 Repeat set", callback_data="repeat_set"))
+        weight_display = trim_zeros(last_set.get('weight'))
+        markup.add(types.InlineKeyboardButton(f"🔁 Repeat {weight_display}kg", callback_data="repeat_set"))
 
     nav_buttons = []
     if total_pages > 1 and page > 0:
@@ -1011,8 +1012,9 @@ def handle_repeat_set(call):
     exercise = next((ex for ex in data.get("pending_exercises", []) if ex["id"] == last["exercise_id"]), None)
     exercise_name = exercise["name"] if exercise else "Exercise"
 
+    last_weight = last.get('weight', 0)
     data['current_exercise_id'] = last['exercise_id']
-    data['current_weight'] = last.get('weight', 0)
+    data['current_weight'] = last_weight
     set_user_data(user_id, data)
 
     last_msg_id = data.get('last_exercise_choice_msg_id')
@@ -1021,7 +1023,7 @@ def handle_repeat_set(call):
             bot.edit_message_text(
                 chat_id=call.message.chat.id,
                 message_id=last_msg_id,
-                text=f"🏋️ {exercise_name} (repeat)",
+                text=f"🏋️ {exercise_name} ({trim_zeros(last_weight)}kg repeat)",
                 reply_markup=None
             )
         except Exception:
