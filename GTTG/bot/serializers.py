@@ -48,10 +48,14 @@ class TrainingCycleSerializer(serializers.ModelSerializer):
 
 class WorkoutExerciseSerializer(serializers.ModelSerializer):
     exercise = ExerciseSerializer(read_only=True)
+    volume = serializers.SerializerMethodField()
 
     class Meta:
         model = WorkoutExercise
-        fields = ['id', 'exercise', 'reps', 'weight']
+        fields = ['id', 'exercise', 'reps', 'weight', 'volume']
+
+    def get_volume(self, obj):
+        return obj.volume
 
 
 class WorkoutSerializer(serializers.ModelSerializer):
@@ -60,11 +64,15 @@ class WorkoutSerializer(serializers.ModelSerializer):
     telegram_id = serializers.IntegerField(write_only=True, required=False)
     cycle_day = CycleDaySerializer(read_only=True)
     cycle_day_id = serializers.PrimaryKeyRelatedField(source='cycle_day', queryset=CycleDay.objects.all(), write_only=True, required=False)
+    total_volume = serializers.SerializerMethodField()
 
     class Meta:
         model = Workout
-        fields = ['id', 'date', 'user', 'telegram_id', 'is_from_plan', 'muscle_groups', 'exercises', 'cycle_day', 'cycle_day_id']
+        fields = ['id', 'date', 'user', 'telegram_id', 'is_from_plan', 'muscle_groups', 'exercises', 'cycle_day', 'cycle_day_id', 'total_volume']
         read_only_fields = ['id', 'date']
+
+    def get_total_volume(self, obj):
+        return obj.total_volume
     
     def to_representation(self, instance):
         ret = super().to_representation(instance)

@@ -1072,6 +1072,13 @@ def trim_zeros(n):
         return str(n)
 
 
+def get_set_volume(workout_set):
+    volume = workout_set.get("volume")
+    if volume is not None:
+        return volume
+    return (workout_set.get("weight") or 0) * (workout_set.get("reps") or 0)
+
+
 def build_group_map():
     groups = get_cached_muscle_groups()
     return {g["id"]: g["name"] for g in groups}
@@ -1164,6 +1171,10 @@ def format_workout_summary(workout):
             lines.append(f"  - {w} kg x {r}")
     if len(lines) == 1:
         lines.append("No exercises logged.")
+    total_volume = workout.get("total_volume")
+    if total_volume is None:
+        total_volume = sum(get_set_volume(we) for we in workout.get("exercises", []))
+    lines.append(f"Total volume: {trim_zeros(total_volume)} kg")
     return "\n".join(lines)
 
 
