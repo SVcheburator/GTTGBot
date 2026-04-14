@@ -64,6 +64,10 @@ class Workout(models.Model):
     def __str__(self):
         return f"{self.user} - {self.date}"
 
+    @property
+    def total_volume(self):
+        return sum(exercise.volume for exercise in self.exercises.all())
+
 
 class WorkoutExercise(models.Model):
     workout = models.ForeignKey(Workout, on_delete=models.CASCADE, related_name='exercises')
@@ -73,3 +77,7 @@ class WorkoutExercise(models.Model):
 
     def __str__(self):
         return f"{self.workout} - {self.exercise.name} ({self.weight}x{self.reps})"
+
+    @property
+    def volume(self):
+        return self.weight * self.reps
